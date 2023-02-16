@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { fullListMaleNames } from 'lists/male';
+import { fullListFemaleNames } from 'lists/female';
+import { MALE_NAMES_MAX_LENGTH } from 'lists/male';
+import { FEMALE_NAMES_MAX_LENGTH } from 'lists/female';
 
 @Component({
   selector: 'app-root',
@@ -11,24 +15,10 @@ export class AppComponent {
   RANDOM_NAMES_RESULTS_PARAGRAPH = "resultsParagraph";
   NUMBER_OF_NAMES_DESIRED_INPUT = "numberOfNamesDesiredInputField";
   numberOfNamesDesired = 2;
-  MAX_RANDOM_NAMES_ALLOWED = 4;
-  genders = ["Female", "Male"];
+  MAX_RANDOM_NAMES_ALLOWED = 10;
+  genders = ["Female", "Male", "Both"];
   chosenGender = "Female";
-  generatedRandomNames = ["test1"]
-  randomNamesList = {
-    female: [
-      "Teuta",
-      "Ana",
-      "Besa",
-      "Zamira"
-    ],
-    male: [
-      "Agron",
-      "Ilir",
-      "Shpetim",
-      "Festim",
-    ]
-  }
+  generatedRandomNames = [""];
 
   ngOnInit() {
     this.generateRandomNames();
@@ -55,18 +45,43 @@ export class AppComponent {
   }
 
   /**
+   * Predicate to check gender is male 
+   * @returns if chosen gender is male or not
+   */
+  isGenderMale(){
+    return this.chosenGender === "Male" ? true : false;
+  }
+
+  /**
    * Generates a desired number of random names from the given "randomNamesList" of names
    * provided a chosen gender
    */
   generateRandomNames(){
+    if (this.numberOfNamesDesired > this.MAX_RANDOM_NAMES_ALLOWED) {
+      alert("Maximum number of allowed random names 10");
+      return;
+    }
+
     let randomNamesTempList :string[] = [];
-    for (let index = 0; index < this.numberOfNamesDesired; index++) {
-      const randomIndex = this.getRandomArbitrary(0,3);
-      this.isGenderFemale() ?
-        randomNamesTempList.push(this.randomNamesList.female[randomIndex]) :
-        randomNamesTempList.push(this.randomNamesList.male[randomIndex]);
+    const maxIndex = this.isGenderFemale() ? FEMALE_NAMES_MAX_LENGTH - 1 : MALE_NAMES_MAX_LENGTH - 1;
+    if (this.isGenderFemale()){
+      for (let index = 0; index < this.numberOfNamesDesired; index++) {
+        const randomIndex = this.getRandomArbitrary(0, maxIndex);
+        randomNamesTempList.push(fullListFemaleNames[randomIndex])
+      }
+    } else if (this.isGenderMale()){
+      for (let index = 0; index < this.numberOfNamesDesired; index++) {
+        const randomIndex = this.getRandomArbitrary(0, maxIndex);
+        randomNamesTempList.push(fullListMaleNames[randomIndex])
+      }
+    } else {
+      const maxIndex = FEMALE_NAMES_MAX_LENGTH > MALE_NAMES_MAX_LENGTH ? FEMALE_NAMES_MAX_LENGTH : MALE_NAMES_MAX_LENGTH ;
+      for (let index = 0; index < this.numberOfNamesDesired; index++) {
+        const randomIndex = this.getRandomArbitrary(0, maxIndex);
+        const isFemale = this.getRandomArbitrary(0, 1);
+        isFemale ? randomNamesTempList.push(fullListFemaleNames[randomIndex]) : randomNamesTempList.push(fullListMaleNames[randomIndex]);
+      }
     }
     this.generatedRandomNames = randomNamesTempList;
   }
-  
 }

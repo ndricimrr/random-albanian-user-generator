@@ -11,7 +11,7 @@
   <option *ngFor="let item of genders" [value]="item">{{item}}</option>
 </select>
 
-<input type="number" min="0" step="1" [(ngModel)]="numberOfNamesDesired" value="0"/>
+<input type="number" min="0" id="desiredRandomNumberInputField" max={{MAX_RANDOM_NAMES_ALLOWED}} step="1" [(ngModel)]="numberOfNamesDesired" value="0"/>
 
 <div id="resultsParagraph">
   <p *ngFor="let name of generatedRandomNames" >{{name}}</p>
