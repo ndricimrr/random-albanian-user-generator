@@ -1,18 +1,26 @@
-<h2>
-  Hello World from the first ever Albanian Name Generator
-</h2>
+<div id="parentContainer">
+  <h2>The Albanian Name Generator</h2>
 
-<button id="generateButton" (click)="generateRandomNames()">
-  Generate Name
-</button>
+  <button id="generateButton" (click)="generateRandomNames()">
+    Generate Name
+  </button>
 
-<select [(ngModel)]="chosenGender" id="genderDropDown">
-  <option value="" disabled selected>select female/male</option>
-  <option *ngFor="let item of genders" [value]="item">{{item}}</option>
-</select>
+  <select [(ngModel)]="chosenGender" id="genderDropDown">
+    <option value="" disabled selected>select female/male</option>
+    <option *ngFor="let item of genders" [value]="item">{{ item }}</option>
+  </select>
 
-<input type="number" min="0" id="desiredRandomNumberInputField" max={{MAX_RANDOM_NAMES_ALLOWED}} step="1" [(ngModel)]="numberOfNamesDesired" value="0"/>
+  <input
+    type="number"
+    min="0"
+    id="desiredRandomNumberInputField"
+    max="{{ MAX_RANDOM_NAMES_ALLOWED }}"
+    step="1"
+    [(ngModel)]="numberOfNamesDesired"
+    value="0"
+  />
 
-<div id="resultsParagraph">
-  <p *ngFor="let name of generatedRandomNames" >{{name}}</p>
+  <div id="resultsParagraph">
+    <p *ngFor="let name of generatedRandomNames">{{ name }}</p>
+  </div>
 </div>
