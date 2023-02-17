@@ -19,9 +19,15 @@ export class AppComponent {
   genders = ['Female', 'Male', 'Both'];
   chosenGender = 'Female';
   generatedRandomNames = [''];
+  resultsParagraphReference: HTMLElement | null = null;
+  paragraphLineHeight = '75px';
 
   ngOnInit() {
+    this.resultsParagraphReference = document.getElementById(
+      this.RANDOM_NAMES_RESULTS_PARAGRAPH
+    );
     this.generateRandomNames();
+    this.paragraphLineHeight = 150 / this.numberOfNamesDesired + 'px';
   }
 
   /**
@@ -90,5 +96,22 @@ export class AppComponent {
       }
     }
     this.generatedRandomNames = randomNamesTempList;
+  }
+
+  copyToClipboard() {
+    const listOfNames = this.generatedRandomNames.map((name) => name).join(' ');
+    // Copy the text inside the text field
+    if (!listOfNames) {
+      return;
+    }
+    navigator.clipboard.writeText(listOfNames);
+    const copiedMessageElement = document.getElementById('copiedMessage');
+    if (!copiedMessageElement) {
+      return;
+    }
+    copiedMessageElement.style.visibility = 'visible';
+    setTimeout(() => {
+      copiedMessageElement.style.visibility = 'hidden';
+    }, 1000);
   }
 }
