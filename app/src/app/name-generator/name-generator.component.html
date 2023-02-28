@@ -1,0 +1,40 @@
+<div id="parentContainer">
+  <h2>Generate random male/female names</h2>
+
+  <div class="controlsPanel">
+    <button id="generateButton" (click)="generateRandomNames()">
+      Generate
+    </button>
+
+    <div class="controlsPanelOptions">
+      <select [(ngModel)]="chosenGender" id="genderDropDown">
+        <option value="" disabled selected>select female/male</option>
+        <option *ngFor="let item of genders" [value]="item">{{ item }}</option>
+      </select>
+
+      <input
+        type="number"
+        min="0"
+        id="desiredRandomNumberInputField"
+        max="{{ MAX_RANDOM_NAMES_ALLOWED }}"
+        step="1"
+        [(ngModel)]="numberOfNamesDesired"
+        value="0"
+      />
+    </div>
+  </div>
+
+  <div id="resultsContainer">
+    <div id="resultsSubContainer">
+      <div>
+        <p id="resultsParagraph" *ngFor="let name of generatedRandomNames">
+          {{ name }}
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="clipboardCopyContainer">
+    <div id="copiedMessage">Copied &#x2714;</div>
+    <button id="copyText" (click)="copyToClipboard()">Copy to Clipboard</button>
+  </div>
+</div>
