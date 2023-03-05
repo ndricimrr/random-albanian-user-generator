@@ -114,4 +114,17 @@ export class UserGeneratorComponent {
       copiedMessageElement.style.visibility = 'hidden';
     }, 1000);
   }
+
+  /**
+   * TODO: Specify limits for dates if birthday not arrived yet
+   * Generate a random birthday date month and year based on a given current age
+   * @param age current age
+   * @returns birthday in format DD.MM.YYYY
+   */
+  generateRandomBirthday(age: number) {
+    const date = this.getRandomArbitrary(1, 30);
+    const month = this.getRandomArbitrary(1, 13);
+    const birthYear = new Date().getFullYear() - age;
+    return date + '.' + month + '.' + birthYear;
+  }
 }
