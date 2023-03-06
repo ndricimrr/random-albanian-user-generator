@@ -1,4 +1,4 @@
-export const fullListStreets = [
+export const fullListCounties = [
   'Tiranë',
   'Durrës',
   'Vlorë',

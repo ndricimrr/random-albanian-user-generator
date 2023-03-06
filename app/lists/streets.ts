@@ -1,4 +1,4 @@
-export const fullListStreets = {
+export const fullListStreetsByCity = {
   Tiranë: [
     'Rruga Ferit Xhajko',
     'Rruga Bardhyl',

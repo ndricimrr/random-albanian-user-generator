@@ -1,5 +1,5 @@
 export const fullListMalePaths = {
-  18_25: [
+  '18_25': [
     {
       large: '00001',
       medium: 'm_00001',
@@ -16,14 +16,14 @@ export const fullListMalePaths = {
       thumbnail: 'th_00003',
     },
   ],
-  26_30: [
+  '26_30': [
     {
       large: '00001',
       medium: 'm_00001',
       thumbnail: 'th_00001',
     },
   ],
-  31_35: [
+  '31_35': [
     {
       large: '00001',
       medium: 'm_00001',
@@ -50,7 +50,7 @@ export const fullListMalePaths = {
       thumbnail: 'th_00005',
     },
   ],
-  36_40: [
+  '36_40': [
     {
       large: '00001',
       medium: 'm_00001',
@@ -62,7 +62,7 @@ export const fullListMalePaths = {
       thumbnail: 'th_00002',
     },
   ],
-  41_50: [
+  '41_50': [
     {
       large: '00001',
       medium: 'm_00001',
@@ -94,7 +94,7 @@ export const fullListMalePaths = {
       thumbnail: 'th_00006',
     },
   ],
-  51_60: [
+  '51_60': [
     {
       large: '00001',
       medium: 'm_00001',
@@ -136,7 +136,7 @@ export const fullListMalePaths = {
       thumbnail: 'th_00008',
     },
   ],
-  61_70: [
+  '61_70': [
     {
       large: '00001',
       medium: 'm_00001',
@@ -168,12 +168,12 @@ export const fullListMalePaths = {
       thumbnail: 'th_00006',
     },
   ],
-  71_80: [
+  '71_80': [
     {
       large: '00001',
       medium: 'm_00001',
       thumbnail: 'th_00001',
     },
   ],
-  81_90: [],
+  '81_90': [],
 };

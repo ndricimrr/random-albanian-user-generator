@@ -3,6 +3,7 @@ import { fullListMaleNames } from 'lists/male';
 import { fullListFemaleNames } from 'lists/female';
 import { MALE_NAMES_MAX_LENGTH } from 'lists/male';
 import { FEMALE_NAMES_MAX_LENGTH } from 'lists/female';
+import { getRandomNumber } from '../utils/functions';
 
 @Component({
   selector: 'app-user-generator',
@@ -28,18 +29,6 @@ export class UserGeneratorComponent {
     );
     this.generateRandomNames();
     this.paragraphLineHeight = 150 / this.numberOfNamesDesired + 'px';
-  }
-
-  /**
-   * Generates and returns a random number between min (inclusive) and max (exclusive)
-   * @param min Minimum number in range to generate
-   * @param max Maximum number in range to generate
-   * @returns Random number between "min" and "max"
-   */
-  getRandomArbitrary(min: number, max: number) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
   /**
@@ -74,12 +63,12 @@ export class UserGeneratorComponent {
       : MALE_NAMES_MAX_LENGTH - 1;
     if (this.isGenderFemale()) {
       for (let index = 0; index < this.numberOfNamesDesired; index++) {
-        const randomIndex = this.getRandomArbitrary(0, maxIndex);
+        const randomIndex = getRandomNumber(0, maxIndex);
         randomNamesTempList.push(fullListFemaleNames[randomIndex]);
       }
     } else if (this.isGenderMale()) {
       for (let index = 0; index < this.numberOfNamesDesired; index++) {
-        const randomIndex = this.getRandomArbitrary(0, maxIndex);
+        const randomIndex = getRandomNumber(0, maxIndex);
         randomNamesTempList.push(fullListMaleNames[randomIndex]);
       }
     } else {
@@ -88,8 +77,8 @@ export class UserGeneratorComponent {
           ? FEMALE_NAMES_MAX_LENGTH
           : MALE_NAMES_MAX_LENGTH;
       for (let index = 0; index < this.numberOfNamesDesired; index++) {
-        const randomIndex = this.getRandomArbitrary(0, maxIndex);
-        const isFemale = this.getRandomArbitrary(0, 1);
+        const randomIndex = getRandomNumber(0, maxIndex);
+        const isFemale = getRandomNumber(0, 1);
         isFemale
           ? randomNamesTempList.push(fullListFemaleNames[randomIndex])
           : randomNamesTempList.push(fullListMaleNames[randomIndex]);
@@ -113,18 +102,5 @@ export class UserGeneratorComponent {
     setTimeout(() => {
       copiedMessageElement.style.visibility = 'hidden';
     }, 1000);
-  }
-
-  /**
-   * TODO: Specify limits for dates if birthday not arrived yet
-   * Generate a random birthday date month and year based on a given current age
-   * @param age current age
-   * @returns birthday in format DD.MM.YYYY
-   */
-  generateRandomBirthday(age: number) {
-    const date = this.getRandomArbitrary(1, 30);
-    const month = this.getRandomArbitrary(1, 13);
-    const birthYear = new Date().getFullYear() - age;
-    return date + '.' + month + '.' + birthYear;
   }
 }
