@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { fullListCounties } from 'lists/counties';
-import { Gender, User } from '../utils/interfaces';
+import { ViewType } from '../utils/component-interface';
+import { Gender, User } from '../utils/user-interface';
 
 @Component({
   selector: 'app-user-generator',
@@ -20,6 +21,9 @@ export class UserGeneratorComponent {
   counties = fullListCounties;
   chosenCounty = fullListCounties[0];
   chosenGender = Gender.FEMALE;
+  chosenViewType: ViewType = ViewType.JSON;
+  ViewType = ViewType;
+  viewTypes = [ViewType.JSON, ViewType.GRAPHICAL];
   generatedRandomUsers: string = '';
   resultsParagraphReference: HTMLElement | null = null;
   paragraphLineHeight = '75px';
@@ -75,7 +79,10 @@ export class UserGeneratorComponent {
     );
   }
 
-  copyToClipboard() {
+  /**
+   * Copies contents of the generated random users into a stringified json format
+   */
+  copyToClipboard(): void {
     navigator.clipboard.writeText(this.generatedRandomUsers);
     const copiedMessageElement = document.getElementById('copiedMessage');
     if (!copiedMessageElement) {
@@ -86,4 +93,6 @@ export class UserGeneratorComponent {
       copiedMessageElement.style.visibility = 'hidden';
     }, 1000);
   }
+
+  setViewType() {}
 }

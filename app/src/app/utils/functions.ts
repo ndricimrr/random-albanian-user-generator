@@ -6,7 +6,7 @@ import { fullListSurnames } from 'lists/surnames';
 
 import { fullListMalePaths } from 'lists/male_image_paths';
 import { fullListStreetsByCity } from 'lists/streets';
-import { Address, AgeGroup, Gender, PicturePath } from './interfaces';
+import { Address, AgeGroup, Gender, PicturePath } from './user-interface';
 
 /**
  * Generates and returns a random number between min (inclusive) and max (exclusive)

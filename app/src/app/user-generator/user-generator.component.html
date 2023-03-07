@@ -6,6 +6,11 @@
       Generate
     </button>
 
+    <select [(ngModel)]="chosenViewType" id="viewTypeDropDown">
+      <option value="" disabled selected>select view type</option>
+      <option *ngFor="let item of viewTypes" [value]="item">{{ item }}</option>
+    </select>
+
     <div class="controlsPanelOptions">
       <select [(ngModel)]="chosenGender" id="genderDropDown">
         <option value="" disabled selected>select female/male</option>
@@ -42,10 +47,15 @@
   <div id="resultsContainer">
     <div id="resultsSubContainer">
       <textarea
+        *ngIf="chosenViewType == ViewType.JSON"
+        id="jsonView"
         type="text"
         editable="false"
         [(ngModel)]="generatedRandomUsers"
       ></textarea>
+      <div id="graphicView" *ngIf="chosenViewType == ViewType.GRAPHICAL">
+        Some Graphical Stuff
+      </div>
     </div>
   </div>
   <div class="clipboardCopyContainer">
