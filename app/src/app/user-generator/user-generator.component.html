@@ -2,7 +2,7 @@
   <h2>Generate random male/female users</h2>
 
   <div class="controlsPanel">
-    <button id="generateButton" (click)="generateRandomNames()">
+    <button id="generateButton" (click)="generateRandomUsers()">
       Generate
     </button>
 
@@ -11,6 +11,21 @@
         <option value="" disabled selected>select female/male</option>
         <option *ngFor="let item of genders" [value]="item">{{ item }}</option>
       </select>
+
+      <select [(ngModel)]="chosenCounty" id="countyDropDown">
+        <option value="" disabled selected>select county</option>
+        <option *ngFor="let item of counties" [value]="item">{{ item }}</option>
+      </select>
+
+      <input
+        type="number"
+        min="18"
+        id="desiredAgeInputField"
+        max="{{ MAX_AGE_ALLOWED }}"
+        step="1"
+        [(ngModel)]="ageDesired"
+        value="18"
+      />
 
       <input
         type="number"
@@ -26,11 +41,7 @@
 
   <div id="resultsContainer">
     <div id="resultsSubContainer">
-      <div>
-        <p id="resultsParagraph" *ngFor="let name of generatedRandomNames">
-          {{ name }}
-        </p>
-      </div>
+      <pre>{{ generatedRandomUsers }}</pre>
     </div>
   </div>
   <div class="clipboardCopyContainer">

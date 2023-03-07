@@ -2,6 +2,8 @@ import { fullListCounties } from 'lists/counties';
 import { fullListFemaleNames } from 'lists/female';
 import { fullListFemalePaths } from 'lists/female_image_paths';
 import { fullListMaleNames } from 'lists/male';
+import { fullListSurnames } from 'lists/surnames';
+
 import { fullListMalePaths } from 'lists/male_image_paths';
 import { fullListStreetsByCity } from 'lists/streets';
 import { Address, AgeGroup, Gender, PicturePath } from './interfaces';
@@ -26,7 +28,7 @@ export function getRandomNumber(min: number, max: number): number {
  */
 export function getRandomBirthday(age: number): string {
   const date = getRandomNumber(1, 30);
-  const month = getRandomNumber(1, 13);
+  const month = getRandomNumber(1, 12);
   const birthYear = new Date().getFullYear() - age;
   return date + '.' + month + '.' + birthYear;
 }
@@ -37,7 +39,7 @@ export function getRandomBirthday(age: number): string {
  */
 export function getRandomPhoneNumber(): string {
   const operators = ['7', '8', '9'];
-  const operatorIndex = getRandomNumber(0, 3);
+  const operatorIndex = getRandomNumber(0, operators.length - 1);
   const firstTwo = getRandomNumber(10, 100);
   const secondTwo = getRandomNumber(11, 99);
   const thirdThree = getRandomNumber(100, 1000);
@@ -54,7 +56,7 @@ export function getRandomPhoneNumber(): string {
  */
 export function getRandomEmail(name: string, surname: string): string {
   const separators = ['.', '_', '', '-'];
-  const separatorIndex = getRandomNumber(0, 4);
+  const separatorIndex = getRandomNumber(0, separators.length - 1);
   const nameSurname =
     name.toLowerCase() + separators[separatorIndex] + surname.toLowerCase();
   const surnameName =
@@ -62,10 +64,9 @@ export function getRandomEmail(name: string, surname: string): string {
   const randomNumber = getRandomNumber(0, 20);
   const isRandomNumberAdded = !!getRandomNumber(0, 1);
   const isNameFirst = !!getRandomNumber(0, 1);
-  const emailUsername =
-    (isNameFirst ? nameSurname : surnameName) + isRandomNumberAdded
-      ? randomNumber
-      : '';
+  const emailUsername = (isNameFirst ? nameSurname : surnameName).concat(
+    isRandomNumberAdded ? randomNumber + '' : ''
+  );
   return emailUsername + '@' + 'example.com';
 }
 
@@ -156,7 +157,7 @@ export function getRandomAge(): number {
  */
 export function getRandomUsername(name: string, surname: string): string {
   const separators = ['.', '_', '', '-'];
-  const separatorIndex = getRandomNumber(0, 4);
+  const separatorIndex = getRandomNumber(0, separators.length - 1);
   const nameSurname =
     name.toLowerCase() + separators[separatorIndex] + surname.toLowerCase();
   const surnameName =
@@ -167,7 +168,7 @@ export function getRandomUsername(name: string, surname: string): string {
 
   return (
     (isNameFirst ? nameSurname : surnameName) +
-    (isRandomNumberAdded ? randomNumber : '')
+    (isRandomNumberAdded ? randomNumber + '' : '')
   );
 }
 

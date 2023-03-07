@@ -1,4 +1,4 @@
-const fullListSurnames = [
+export const fullListSurnames = [
   'Abazaj',
   'Abazi',
   'Abdi',
@@ -824,7 +824,6 @@ const fullListSurnames = [
   'Datja',
   'Daulle',
   'Daullja',
-  'Daut',
   'Dautaj',
   'Dauti',
   'Davidhi',

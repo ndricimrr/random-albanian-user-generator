@@ -9,7 +9,7 @@
 h2 {
   display: flex;
   justify-content: center;
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 .controlsPanel {
@@ -34,29 +34,37 @@ h2 {
 
 #resultsContainer {
   padding: 4px;
-  height: 300px;
+  height: 400px;
 }
 
 #resultsSubContainer {
-  background-color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
   height: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
+  overflow: auto;
+  padding: 15px 10px 10px;
+}
+
+pre {
+  height: inherit;
+  font-size: 7pt;
 }
 
 #resultsParagraph {
-  color: white;
+  color: rgb(0, 0, 0);
   word-wrap: break-word;
   text-align: center;
   vertical-align: center;
-  font-size: 1.5rem;
+  font-size: 0.9rem;
   line-height: 10%;
 }
 
 .clipboardCopyContainer {
   display: flex;
   justify-content: right;
+  margin-top: 25px;
 }
 
 #copiedMessage {
