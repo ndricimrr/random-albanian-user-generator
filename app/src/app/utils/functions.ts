@@ -232,3 +232,20 @@ export function getRandomFemaleImagePaths(age: number): PicturePath {
   }
   return picturePathsByAgeGroup[getRandomNumber(0, maxIndex)];
 }
+
+/**
+ * Generates the path of the corresponding image of the user given age group, picturePath and gender
+ * @param ageGroup given age group of the user
+ * @param picturePath given picture path object
+ * @param gender given gender
+ * @returns string with the path loation
+ */
+export function getAssetsImagePath(
+  ageGroup: AgeGroup,
+  picturePath: PicturePath,
+  gender: Gender
+): string {
+  const imagesDir = '../../assets/images/';
+  const genderFolder = gender === Gender.FEMALE ? 'female/' : 'male/';
+  return imagesDir + genderFolder + ageGroup + '/' + picturePath.large + '.jpg';
+}

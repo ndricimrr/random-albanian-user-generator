@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { fullListCounties } from 'lists/counties';
 import { ViewType } from '../utils/component-interface';
-import { Gender, User } from '../utils/user-interface';
+import { AgeGroup, Gender, PicturePath, User } from '../utils/user-interface';
 
 @Component({
   selector: 'app-user-generator',
@@ -21,10 +21,15 @@ export class UserGeneratorComponent {
   counties = fullListCounties;
   chosenCounty = fullListCounties[0];
   chosenGender = Gender.FEMALE;
-  chosenViewType: ViewType = ViewType.JSON;
+  chosenViewType: ViewType = ViewType.GRAPHICAL_TABLE;
   ViewType = ViewType;
-  viewTypes = [ViewType.JSON, ViewType.GRAPHICAL];
-  generatedRandomUsers: string = '';
+  viewTypes = [
+    ViewType.GRAPHICAL_TABLE,
+    ViewType.JSON,
+    ViewType.GRAPHICAL_LIST,
+  ];
+  generatedRandomUsersString: string = '';
+  generatedRandomUsersObject: User[] = [];
   resultsParagraphReference: HTMLElement | null = null;
   paragraphLineHeight = '75px';
 
@@ -72,7 +77,8 @@ export class UserGeneratorComponent {
       );
       randomNamesTempList.push(randomUser);
     }
-    this.generatedRandomUsers = JSON.stringify(
+    this.generatedRandomUsersObject = randomNamesTempList;
+    this.generatedRandomUsersString = JSON.stringify(
       randomNamesTempList,
       undefined,
       4
@@ -83,7 +89,7 @@ export class UserGeneratorComponent {
    * Copies contents of the generated random users into a stringified json format
    */
   copyToClipboard(): void {
-    navigator.clipboard.writeText(this.generatedRandomUsers);
+    navigator.clipboard.writeText(this.generatedRandomUsersString);
     const copiedMessageElement = document.getElementById('copiedMessage');
     if (!copiedMessageElement) {
       return;
@@ -93,6 +99,4 @@ export class UserGeneratorComponent {
       copiedMessageElement.style.visibility = 'hidden';
     }, 1000);
   }
-
-  setViewType() {}
 }
