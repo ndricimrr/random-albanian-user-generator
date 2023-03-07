@@ -83,19 +83,20 @@
         <div id="tableView" *ngFor="let user of generatedRandomUsersObject">
           <table>
             <tr>
-              <th>
+              <th rowspan="2">
                 <img
                   src="{{ user.builtPicturePath }}"
                   width="60px"
                   alt="face of a person"
                 />
               </th>
-
               <td>{{ user.name }} {{ user.surname }}</td>
             </tr>
             <tr>
-              <th>Username</th>
-              <td>{{ user.username }}</td>
+              <td>
+                <b>Username </b> &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
+                {{ user.username }}
+              </td>
             </tr>
             <tr>
               <th>Birthday</th>
