@@ -43,13 +43,15 @@ h2 {
   display: flex;
   justify-content: left;
   align-items: center;
-  overflow: auto;
-  padding: 15px 10px 10px;
+  padding: 7px 7px 7px;
 }
 
-pre {
-  height: inherit;
+textarea {
+  height: 100%;
+  width: 100%;
   font-size: 7pt;
+  border: none;
+  resize: none;
 }
 
 #resultsParagraph {

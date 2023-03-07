@@ -41,7 +41,11 @@
 
   <div id="resultsContainer">
     <div id="resultsSubContainer">
-      <pre>{{ generatedRandomUsers }}</pre>
+      <textarea
+        type="text"
+        editable="false"
+        [(ngModel)]="generatedRandomUsers"
+      ></textarea>
     </div>
   </div>
   <div class="clipboardCopyContainer">
