@@ -6,10 +6,36 @@ import { UserGeneratorComponent } from './user-generator/user-generator.componen
 import { NameGeneratorComponent } from './name-generator/name-generator.component';
 import { AppRoutingModule } from './modules/app-routing.module';
 import { PageSwitcherComponent } from './page-switcher/page-switcher.component';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+
+// AoT requires an exported function for factories
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
-  declarations: [AppComponent, UserGeneratorComponent, NameGeneratorComponent, PageSwitcherComponent],
-  imports: [BrowserModule, FormsModule, AppRoutingModule],
+  declarations: [
+    AppComponent,
+    UserGeneratorComponent,
+    NameGeneratorComponent,
+    PageSwitcherComponent,
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    AppRoutingModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      defaultLanguage: 'sq',
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+    }),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
