@@ -1,3 +1,26 @@
 {
-  "HELLO": "Pershendetje {{value}}"
+  "HELLO": "Pershendetje {{value}}",
+  "UserGenerator": {
+    "header": "Gjenero të dhëna përdoruesish të rastësishëm",
+    "generateBtn": "Gjenero",
+    "viewTypePrompt": "Zgjidh formatin",
+    "genderSelectPrompt": "Zgjidh gjininë",
+    "countySelectPrompt": "Zgjidh qarkun",
+    "name": "Emri",
+    "username": "Username",
+    "birthday": "Ditëlindja",
+    "age": "Mosha",
+    "address": "Adresa",
+    "email": "Imeili",
+    "phone": "Tel",
+    "copyToClipboard": "Kopjo",
+    "copied": "U kopjua"
+  },
+  "Common": {
+    "gender": "Gjinia"
+  },
+  "gender": {
+    "female": "Femër",
+    "male": "Mashkull"
+  }
 }

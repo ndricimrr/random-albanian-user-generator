@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { fullListCounties } from 'lists/counties';
 import { ViewType } from '../utils/component-interface';
-import { AgeGroup, Gender, PicturePath, User } from '../utils/user-interface';
+import { Gender, User } from '../utils/user-interface';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-user-generator',
@@ -32,6 +33,13 @@ export class UserGeneratorComponent {
   generatedRandomUsersObject: User[] = [];
   resultsParagraphReference: HTMLElement | null = null;
   paragraphLineHeight = '75px';
+  translate: TranslateService = TranslateService.prototype;
+
+  constructor(translate: TranslateService) {
+    // the lang to use, if the lang isn't available, it will use the current loader to get them
+    translate.use('sq');
+    this.translate = translate;
+  }
 
   ngOnInit() {
     this.resultsParagraphReference = document.getElementById(
@@ -39,22 +47,12 @@ export class UserGeneratorComponent {
     );
     this.generateRandomUsers();
     this.paragraphLineHeight = 150 / this.numberOfNamesDesired + 'px';
-  }
-
-  /**
-   * Predicate to check gender is female
-   * @returns if chosen gender is female or not
-   */
-  isGenderFemale() {
-    return this.chosenGender === Gender.FEMALE ? true : false;
-  }
-
-  /**
-   * Predicate to check gender is male
-   * @returns if chosen gender is male or not
-   */
-  isGenderMale() {
-    return this.chosenGender === Gender.MALE ? true : false;
+    this.translate.use('sq');
+    this.translate.get(['gender']).subscribe((translations) => {
+      console.log(translations, 1);
+      // this.genders[0] = translations.gender.male;
+      // this.genders[1] = translations.gender.female;
+    });
   }
 
   /**

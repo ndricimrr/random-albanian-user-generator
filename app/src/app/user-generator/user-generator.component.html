@@ -1,24 +1,32 @@
 <div id="parentContainer">
-  <h2>Generate random male/female users</h2>
+  <h2>
+    {{ "UserGenerator.header" | translate }}
+  </h2>
 
   <div class="controlsPanel">
     <button id="generateButton" (click)="generateRandomUsers()">
-      Generate
+      {{ "UserGenerator.generateBtn" | translate }}
     </button>
 
     <select [(ngModel)]="chosenViewType" id="viewTypeDropDown">
-      <option value="" disabled selected>select view type</option>
+      <option value="" disabled selected>
+        {{ "UserGenerator.viewTypePrompt" | translate }}
+      </option>
       <option *ngFor="let item of viewTypes" [value]="item">{{ item }}</option>
     </select>
 
     <div class="controlsPanelOptions">
       <select [(ngModel)]="chosenGender" id="genderDropDown">
-        <option value="" disabled selected>select female/male</option>
+        <option value="" disabled selected>
+          {{ "UserGenerator.genderSelectPrompt" | translate }}
+        </option>
         <option *ngFor="let item of genders" [value]="item">{{ item }}</option>
       </select>
 
       <select [(ngModel)]="chosenCounty" id="countyDropDown">
-        <option value="" disabled selected>select county</option>
+        <option value="" disabled selected>
+          {{ "UserGenerator.countySelectPrompt" | translate }}
+        </option>
         <option *ngFor="let item of counties" [value]="item">{{ item }}</option>
       </select>
 
@@ -57,22 +65,37 @@
         id="graphicViewList"
         *ngIf="chosenViewType == ViewType.GRAPHICAL_LIST"
       >
-        Some Graphical Stuff
         <div id="listView" *ngFor="let user of generatedRandomUsersObject">
-          User:<img
+          <img
             src="{{ user.builtPicturePath }}"
             width="60px"
             alt="face of a person"
           />
-          <p><b>Name: </b>{{ user.name }} {{ user.surname }}</p>
-          <p><b>Username: </b>{{ user.username }}</p>
-          <p><b>Birthday: </b>{{ user.birthday }}</p>
-          <p><b>Age: </b>{{ user.age }}</p>
           <p>
-            <b>Address : </b>{{ user.address.name }} {{ user.address.number }}
+            <b>{{ "UserGenerator.name" | translate }}: </b>{{ user.name }}
+            {{ user.surname }}
           </p>
-          <p><b>Email: </b>{{ user.email }}</p>
-          <p><b>Phone: </b>{{ user.phone }}</p>
+          <p>
+            <b>{{ "UserGenerator.username" | translate }}: </b
+            >{{ user.username }}
+          </p>
+          <p>
+            <b>{{ "UserGenerator.birthday" | translate }}: </b
+            >{{ user.birthday }}
+          </p>
+          <p>
+            <b>{{ "UserGenerator.age" | translate }}: </b>{{ user.age }}
+          </p>
+          <p>
+            <b>{{ "UserGenerator.address" | translate }} : </b
+            >{{ user.address.name }} {{ user.address.number }}
+          </p>
+          <p>
+            <b>{{ "UserGenerator.email" | translate }}: </b>{{ user.email }}
+          </p>
+          <p>
+            <b>{{ "UserGenerator.phone" | translate }}: </b>{{ user.phone }}
+          </p>
           <hr />
         </div>
       </div>
@@ -94,28 +117,29 @@
             </tr>
             <tr>
               <td>
-                <b>Username </b> &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
+                <b>{{ "UserGenerator.username" | translate }} </b>
+                &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
                 {{ user.username }}
               </td>
             </tr>
             <tr>
-              <th>Birthday</th>
+              <th>{{ "UserGenerator.birthday" | translate }}</th>
               <td>{{ user.birthday }}</td>
             </tr>
             <tr>
-              <th>Age</th>
+              <th>{{ "UserGenerator.age" | translate }}</th>
               <td>{{ user.age }}</td>
             </tr>
             <tr>
-              <th>Address</th>
+              <th>{{ "UserGenerator.address" | translate }}</th>
               <td>{{ user.address.name }} {{ user.address.number }}</td>
             </tr>
             <tr>
-              <th>Email</th>
+              <th>{{ "UserGenerator.email" | translate }}</th>
               <td>{{ user.email }}</td>
             </tr>
             <tr>
-              <th>Phone</th>
+              <th>{{ "UserGenerator.phone" | translate }}</th>
               <td>{{ user.phone }}</td>
             </tr>
           </table>
@@ -124,7 +148,11 @@
     </div>
   </div>
   <div class="clipboardCopyContainer">
-    <div id="copiedMessage">Copied &#x2714;</div>
-    <button id="copyText" (click)="copyToClipboard()">Copy to Clipboard</button>
+    <div id="copiedMessage">
+      {{ "UserGenerator.copied" | translate }} &#x2714;
+    </div>
+    <button id="copyText" (click)="copyToClipboard()">
+      {{ "UserGenerator.copyToClipboard" | translate }}
+    </button>
   </div>
 </div>
