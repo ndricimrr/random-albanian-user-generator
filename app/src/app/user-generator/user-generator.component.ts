@@ -18,7 +18,7 @@ export class UserGeneratorComponent {
   MAX_RANDOM_NAMES_ALLOWED = 3;
   MAX_AGE_ALLOWED = 100;
   ageDesired = 18;
-  genders = ['Female', 'Male'];
+  genders = ['gender.f', 'gender.m'];
   counties = fullListCounties;
   chosenCounty = fullListCounties[0];
   chosenGender = Gender.FEMALE;
@@ -48,11 +48,6 @@ export class UserGeneratorComponent {
     this.generateRandomUsers();
     this.paragraphLineHeight = 150 / this.numberOfNamesDesired + 'px';
     this.translate.use('sq');
-    this.translate.get(['gender']).subscribe((translations) => {
-      console.log(translations, 1);
-      // this.genders[0] = translations.gender.male;
-      // this.genders[1] = translations.gender.female;
-    });
   }
 
   /**

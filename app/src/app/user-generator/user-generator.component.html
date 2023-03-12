@@ -20,7 +20,9 @@
         <option value="" disabled selected>
           {{ "UserGenerator.genderSelectPrompt" | translate }}
         </option>
-        <option *ngFor="let item of genders" [value]="item">{{ item }}</option>
+        <option *ngFor="let item of genders" [value]="item">
+          {{ item | translate }}
+        </option>
       </select>
 
       <select [(ngModel)]="chosenCounty" id="countyDropDown">
