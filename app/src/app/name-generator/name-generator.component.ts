@@ -2,12 +2,13 @@ import { fullListMaleNames } from 'lists/male';
 import { fullListFemaleNames } from 'lists/female';
 import { MALE_NAMES_MAX_LENGTH } from 'lists/male';
 import { FEMALE_NAMES_MAX_LENGTH } from 'lists/female';
+import { Component } from '@angular/core';
 
-({
+@Component({
   selector: 'app-name-generator',
   templateUrl: './name-generator.component.html',
   styleUrls: ['./name-generator.component.css'],
-});
+})
 export class NameGeneratorComponent {
   title = 'app';
   GENERATE_BUTTON_ID = 'generateButton';

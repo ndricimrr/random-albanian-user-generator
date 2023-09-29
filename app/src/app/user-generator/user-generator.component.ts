@@ -2,12 +2,13 @@ import { fullListCounties } from 'lists/counties';
 import { ViewType } from '../utils/component-interface';
 import { Gender, User } from '../utils/user-interface';
 import { TranslateService } from '@ngx-translate/core';
+import { Component } from '@angular/core';
 
-({
+@Component({
   selector: 'app-user-generator',
   templateUrl: './user-generator.component.html',
   styleUrls: ['./user-generator.component.css'],
-});
+})
 export class UserGeneratorComponent {
   title = 'app';
   GENERATE_BUTTON_ID = 'generateButton';
