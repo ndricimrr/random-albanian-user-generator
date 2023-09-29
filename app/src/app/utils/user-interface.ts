@@ -22,8 +22,8 @@ export interface Address {
 }
 
 export enum Gender {
-  FEMALE = 'gender.f',
-  MALE = 'gender.m',
+  FEMALE = 'gender.female',
+  MALE = 'gender.male',
 }
 
 export interface PicturePath {

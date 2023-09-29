@@ -20,9 +20,7 @@
     "gender": "Gender"
   },
   "gender": {
-    "f": "Female",
-    "m": "Male"
-  },
-  "f": "Female",
-  "m": "Male"
+    "female": "Female",
+    "male": "Male"
+  }
 }

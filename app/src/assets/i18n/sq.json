@@ -20,9 +20,7 @@
     "gender": "Gjinia"
   },
   "gender": {
-    "f": "Femër",
-    "m": "Mashkull"
-  },
-  "f": "Femër",
-  "m": "Mashkull"
+    "female": "Femër",
+    "male": "Mashkull"
+  }
 }

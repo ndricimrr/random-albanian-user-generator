@@ -1,14 +1,13 @@
-import { Component } from '@angular/core';
 import { fullListCounties } from 'lists/counties';
 import { ViewType } from '../utils/component-interface';
 import { Gender, User } from '../utils/user-interface';
 import { TranslateService } from '@ngx-translate/core';
 
-@Component({
+({
   selector: 'app-user-generator',
   templateUrl: './user-generator.component.html',
   styleUrls: ['./user-generator.component.css'],
-})
+});
 export class UserGeneratorComponent {
   title = 'app';
   GENERATE_BUTTON_ID = 'generateButton';
@@ -18,7 +17,7 @@ export class UserGeneratorComponent {
   MAX_RANDOM_NAMES_ALLOWED = 3;
   MAX_AGE_ALLOWED = 100;
   ageDesired = 18;
-  genders = ['gender.f', 'gender.m'];
+  genders = ['gender.female', 'gender.male'];
   counties = fullListCounties;
   chosenCounty = fullListCounties[0];
   chosenGender = Gender.FEMALE;
