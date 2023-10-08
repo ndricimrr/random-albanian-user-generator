@@ -1,15 +1,16 @@
 #parentContainer {
-  position: fixed;
+  position: relative;
+  top: 150px;
+  /* position: fixed;
   left: 50%;
   top: 20%;
   width: 50%;
-  transform: translate(-50%, -5%);
+  transform: translate(-50%, -5%); */
 }
 
 h2 {
   display: flex;
   justify-content: center;
-  color: white;
 }
 
 .controlsPanel {

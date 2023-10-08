@@ -15,7 +15,7 @@ export class UserGeneratorComponent {
   RANDOM_NAMES_RESULTS_PARAGRAPH = 'resultsParagraph';
   NUMBER_OF_NAMES_DESIRED_INPUT = 'numberOfNamesDesiredInputField';
   numberOfNamesDesired = 2;
-  MAX_RANDOM_NAMES_ALLOWED = 3;
+  MAX_RANDOM_NAMES_ALLOWED = 10;
   MAX_AGE_ALLOWED = 100;
   ageDesired = 18;
   genders = ['gender.female', 'gender.male'];

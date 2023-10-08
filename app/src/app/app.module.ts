@@ -10,6 +10,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
+import { FootNavComponent } from './foot-nav/foot-nav.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -22,6 +23,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     UserGeneratorComponent,
     NameGeneratorComponent,
     NavigationBarComponent,
+    FootNavComponent,
   ],
   imports: [
     BrowserModule,
