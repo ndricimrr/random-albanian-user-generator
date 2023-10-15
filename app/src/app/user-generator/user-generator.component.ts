@@ -32,7 +32,6 @@ export class UserGeneratorComponent {
   generatedRandomUsersString: string = '';
   generatedRandomUsersObject: User[] = [];
   resultsParagraphReference: HTMLElement | null = null;
-  paragraphLineHeight = '75px';
   translate: TranslateService = TranslateService.prototype;
 
   constructor(translate: TranslateService) {
@@ -46,7 +45,6 @@ export class UserGeneratorComponent {
       this.RANDOM_NAMES_RESULTS_PARAGRAPH
     );
     this.generateRandomUsers();
-    this.paragraphLineHeight = 150 / this.numberOfNamesDesired + 'px';
     this.translate.use('sq');
   }
 

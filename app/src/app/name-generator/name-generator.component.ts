@@ -2,7 +2,7 @@ import { fullListMaleNames } from 'lists/male';
 import { fullListFemaleNames } from 'lists/female';
 import { MALE_NAMES_MAX_LENGTH } from 'lists/male';
 import { FEMALE_NAMES_MAX_LENGTH } from 'lists/female';
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-name-generator',
@@ -15,19 +15,19 @@ export class NameGeneratorComponent {
   RANDOM_NAMES_RESULTS_PARAGRAPH = 'resultsParagraph';
   NUMBER_OF_NAMES_DESIRED_INPUT = 'numberOfNamesDesiredInputField';
   numberOfNamesDesired = 2;
-  MAX_RANDOM_NAMES_ALLOWED = 10;
+  MAX_RANDOM_NAMES_ALLOWED = 5;
   genders = ['Female', 'Male', 'Both'];
   chosenGender = 'Female';
   generatedRandomNames = [''];
   resultsParagraphReference: HTMLElement | null = null;
-  paragraphLineHeight = '75px';
+
+  @ViewChild('resultBox') resultBox: ElementRef | undefined = undefined;
 
   ngOnInit() {
     this.resultsParagraphReference = document.getElementById(
       this.RANDOM_NAMES_RESULTS_PARAGRAPH
     );
     this.generateRandomNames();
-    this.paragraphLineHeight = 150 / this.numberOfNamesDesired + 'px';
   }
 
   /**
@@ -113,5 +113,22 @@ export class NameGeneratorComponent {
     setTimeout(() => {
       copiedMessageElement.style.visibility = 'hidden';
     }, 1000);
+  }
+
+  /**
+   * This function is used to act upon the change of the chosen gender.
+   * Sets the color to pink, blue or orange respectively
+   * @param chosenGender the picked gender from the dropdown
+   */
+  onGenderChanged(chosenGender: string): void {
+    if (!this.resultBox) return;
+
+    if (chosenGender === this.genders[0]) {
+      this.resultBox.nativeElement.style.backgroundColor = '#ff00dd';
+    } else if (chosenGender === this.genders[1]) {
+      this.resultBox.nativeElement.style.backgroundColor = '#3700ff';
+    } else {
+      this.resultBox.nativeElement.style.backgroundColor = '#ff8800';
+    }
   }
 }

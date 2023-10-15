@@ -1,11 +1,6 @@
 #parentContainer {
   position: relative;
   top: 150px;
-  /* position: fixed;
-  left: 50%;
-  top: 20%;
-  width: 50%;
-  transform: translate(-50%, -5%); */
 }
 
 h2 {
@@ -14,21 +9,12 @@ h2 {
   color: rgb(0, 0, 0);
 }
 
-.controlsPanel {
-  display: flex;
-  justify-content: space-between;
-}
-
-#generateButton {
-  padding: 4px;
-}
-
-#genderDropDown {
+/* #genderDropDown {
   right: 0;
   padding: 4px;
   width: 80px;
   margin-right: 10px;
-}
+} */
 
 #desiredRandomNumberInputField {
   padding: 4px;
@@ -89,17 +75,6 @@ table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
-}
-
-td,
-th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: #dddddd;
 }
 
 .clipboardCopyContainer {
