@@ -1,9 +1,10 @@
+:host {
+  width: 100%;
+}
+
 #parentContainer {
-  position: fixed;
-  left: 50%;
-  top: 20%;
-  width: 50%;
-  transform: translate(-50%, -5%);
+  position: relative;
+  top: 150px;
 }
 
 h2 {
@@ -12,29 +13,13 @@ h2 {
   color: rgb(0, 0, 0);
 }
 
-.controlsPanel {
-  display: flex;
-  justify-content: space-between;
-}
-
-#generateButton {
-  padding: 4px;
-}
-
-#genderDropDown {
-  right: 0;
-  padding: 4px;
-  width: 80px;
-  margin-right: 10px;
-}
-
 #desiredRandomNumberInputField {
   padding: 4px;
 }
 
 #resultsContainer {
   padding: 4px;
-  height: 400px;
+  height: 600px;
 }
 
 #resultsSubContainer {
@@ -89,17 +74,6 @@ table {
   width: 100%;
 }
 
-td,
-th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
-
 .clipboardCopyContainer {
   display: flex;
   justify-content: right;
@@ -118,10 +92,22 @@ tr:nth-child(even) {
 
 @media screen and (max-width: 450px) {
   #parentContainer {
-    width: 80%;
+    width: 100%;
   }
 
   #genderDropDown {
     margin-right: 1px;
   }
+}
+
+@media (max-width: 1000px) {
+  /* Set the tables to display as one column */
+  .table-responsive {
+    display: block;
+    overflow-x: auto;
+  }
+}
+
+.fixed-width-table {
+  max-width: 400px;
 }

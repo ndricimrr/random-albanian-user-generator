@@ -1,130 +1,251 @@
 <div id="parentContainer">
-  <h2>Generate random male/female users</h2>
+  <h2>
+    {{ "UserGenerator.header" | translate }}
+  </h2>
 
-  <div class="controlsPanel">
-    <button id="generateButton" (click)="generateRandomUsers()">
-      Generate
-    </button>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="">
+          <table class="table table-borderless">
+            <tbody>
+              <tr>
+                <td>Gender</td>
+                <td>
+                  <select
+                    class="form-select"
+                    [(ngModel)]="chosenGender"
+                    id="genderDropDown"
+                  >
+                    <option value="" disabled selected>
+                      {{ "UserGenerator.genderSelectPrompt" | translate }}
+                    </option>
+                    <option *ngFor="let item of genders" [value]="item">
+                      {{ item | translate }}
+                    </option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>View</td>
+                <td>
+                  <select
+                    class="form-select"
+                    [(ngModel)]="chosenViewType"
+                    id="viewTypeDropDown"
+                  >
+                    <option value="" disabled selected>
+                      {{ "UserGenerator.viewTypePrompt" | translate }}
+                    </option>
+                    <option *ngFor="let item of viewTypes" [value]="item">
+                      {{ item }}
+                    </option>
+                  </select>
+                </td>
+              </tr>
 
-    <select [(ngModel)]="chosenViewType" id="viewTypeDropDown">
-      <option value="" disabled selected>select view type</option>
-      <option *ngFor="let item of viewTypes" [value]="item">{{ item }}</option>
-    </select>
+              <tr>
+                <td>
+                  <label for="numberOfItems" class="form-label">Quantity</label>
+                </td>
+                <td>
+                  <input
+                    class="form-control"
+                    type="number"
+                    min="0"
+                    id="desiredRandomNumberInputField"
+                    max="{{ MAX_RANDOM_NAMES_ALLOWED }}"
+                    step="1"
+                    [(ngModel)]="numberOfNamesDesired"
+                    value="0"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for="numberOfItems" class="form-label">Qarku</label>
+                </td>
+                <td>
+                  <select
+                    class="form-select"
+                    [(ngModel)]="chosenCounty"
+                    id="countyDropDown"
+                  >
+                    <option value="" disabled selected>
+                      {{ "UserGenerator.countySelectPrompt" | translate }}
+                    </option>
+                    <option *ngFor="let item of counties" [value]="item">
+                      {{ item }}
+                    </option>
+                  </select>
+                </td>
+              </tr>
 
-    <div class="controlsPanelOptions">
-      <select [(ngModel)]="chosenGender" id="genderDropDown">
-        <option value="" disabled selected>select female/male</option>
-        <option *ngFor="let item of genders" [value]="item">{{ item }}</option>
-      </select>
-
-      <select [(ngModel)]="chosenCounty" id="countyDropDown">
-        <option value="" disabled selected>select county</option>
-        <option *ngFor="let item of counties" [value]="item">{{ item }}</option>
-      </select>
-
-      <input
-        type="number"
-        min="18"
-        id="desiredAgeInputField"
-        max="{{ MAX_AGE_ALLOWED }}"
-        step="1"
-        [(ngModel)]="ageDesired"
-        value="18"
-      />
-
-      <input
-        type="number"
-        min="0"
-        id="desiredRandomNumberInputField"
-        max="{{ MAX_RANDOM_NAMES_ALLOWED }}"
-        step="1"
-        [(ngModel)]="numberOfNamesDesired"
-        value="0"
-      />
-    </div>
-  </div>
-
-  <div id="resultsContainer">
-    <div id="resultsSubContainer">
-      <textarea
-        *ngIf="chosenViewType == ViewType.JSON"
-        id="jsonView"
-        type="text"
-        editable="false"
-        [(ngModel)]="generatedRandomUsersString"
-      ></textarea>
-      <div
-        id="graphicViewList"
-        *ngIf="chosenViewType == ViewType.GRAPHICAL_LIST"
-      >
-        Some Graphical Stuff
-        <div id="listView" *ngFor="let user of generatedRandomUsersObject">
-          User:<img
-            src="{{ user.builtPicturePath }}"
-            width="60px"
-            alt="face of a person"
-          />
-          <p><b>Name: </b>{{ user.name }} {{ user.surname }}</p>
-          <p><b>Username: </b>{{ user.username }}</p>
-          <p><b>Birthday: </b>{{ user.birthday }}</p>
-          <p><b>Age: </b>{{ user.age }}</p>
-          <p>
-            <b>Address : </b>{{ user.address.name }} {{ user.address.number }}
-          </p>
-          <p><b>Email: </b>{{ user.email }}</p>
-          <p><b>Phone: </b>{{ user.phone }}</p>
-          <hr />
+              <tr>
+                <td>
+                  <label for="numberOfItems" class="form-label">Age</label>
+                </td>
+                <td>
+                  <input
+                    class="form-control"
+                    type="number"
+                    min="18"
+                    id="desiredAgeInputField"
+                    max="{{ MAX_AGE_ALLOWED }}"
+                    step="1"
+                    [(ngModel)]="ageDesired"
+                    value="18"
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="text-center">
+            <button
+              class="btn btn-success"
+              id="generateButton"
+              (click)="generateRandomUsers()"
+            >
+              {{ "UserGenerator.generateBtn" | translate }}
+            </button>
+          </div>
         </div>
       </div>
-      <div
-        id="graphicViewTable"
-        *ngIf="chosenViewType == ViewType.GRAPHICAL_TABLE"
-      >
-        <div id="tableView" *ngFor="let user of generatedRandomUsersObject">
-          <table>
-            <tr>
-              <th rowspan="2">
+      <div class="col-md-8">
+        <div id="resultsContainer">
+          <div id="resultsSubContainer">
+            <textarea
+              *ngIf="chosenViewType == ViewType.JSON"
+              id="jsonView"
+              type="text"
+              editable="false"
+              [(ngModel)]="generatedRandomUsersString"
+            ></textarea>
+            <div
+              id="graphicViewList"
+              *ngIf="chosenViewType == ViewType.GRAPHICAL_LIST"
+            >
+              <div
+                id="listView"
+                *ngFor="let user of generatedRandomUsersObject"
+              >
                 <img
                   src="{{ user.builtPicturePath }}"
                   width="60px"
                   alt="face of a person"
                 />
-              </th>
-              <td>{{ user.name }} {{ user.surname }}</td>
-            </tr>
-            <tr>
-              <td>
-                <b>Username </b> &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
-                {{ user.username }}
-              </td>
-            </tr>
-            <tr>
-              <th>Birthday</th>
-              <td>{{ user.birthday }}</td>
-            </tr>
-            <tr>
-              <th>Age</th>
-              <td>{{ user.age }}</td>
-            </tr>
-            <tr>
-              <th>Address</th>
-              <td>{{ user.address.name }} {{ user.address.number }}</td>
-            </tr>
-            <tr>
-              <th>Email</th>
-              <td>{{ user.email }}</td>
-            </tr>
-            <tr>
-              <th>Phone</th>
-              <td>{{ user.phone }}</td>
-            </tr>
-          </table>
+                <p>
+                  <b>{{ "UserGenerator.name" | translate }}: </b>{{ user.name }}
+                  {{ user.surname }}
+                </p>
+                <p>
+                  <b>{{ "UserGenerator.username" | translate }}: </b
+                  >{{ user.username }}
+                </p>
+                <p>
+                  <b>{{ "UserGenerator.birthday" | translate }}: </b
+                  >{{ user.birthday }}
+                </p>
+                <p>
+                  <b>{{ "UserGenerator.age" | translate }}: </b>{{ user.age }}
+                </p>
+                <p>
+                  <b>{{ "UserGenerator.address" | translate }} : </b
+                  >{{ user.address.name }} {{ user.address.number }}
+                </p>
+                <p>
+                  <b>{{ "UserGenerator.email" | translate }}: </b
+                  >{{ user.email }}
+                </p>
+                <p>
+                  <b>{{ "UserGenerator.phone" | translate }}: </b
+                  >{{ user.phone }}
+                </p>
+                <hr />
+              </div>
+            </div>
+            <!--  -->
+            <!-- FULL GRAPHIC VIEW TABLE -->
+
+            <div
+              id="graphicViewTable"
+              *ngIf="chosenViewType == ViewType.GRAPHICAL_TABLE"
+              class="p-4"
+            >
+              <div class="row row-cols-1 row-cols-md-2 g-4">
+                <div
+                  class="col"
+                  *ngFor="let user of generatedRandomUsersObject; let i = index"
+                >
+                  <div class="table-responsive fixed-width-table mb-3">
+                    <table
+                      class="table table-striped table-vertical mb-5 mt-4 p-4"
+                    >
+                      <tbody>
+                        <tr>
+                          <th scope="row">Foto e perdoruesit</th>
+                          <td>
+                            <img
+                              src="{{ user.builtPicturePath }}"
+                              alt="Face of a person"
+                              class="img-thumbnail"
+                              width="100"
+                            />
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Emri i plote</th>
+                          <td>{{ user.name }} {{ user.surname }}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Ditëlindja</th>
+                          <td>{{ user.birthday }}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Mosha</th>
+                          <td>{{ user.age }}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Adresa</th>
+                          <td>
+                            {{ user.address.name }} {{ user.address.number }}
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Imeili</th>
+                          <td>{{ user.email }}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Tel</th>
+                          <td>{{ user.phone }}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Username</th>
+                          <td>{{ user.username }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="w-100" *ngIf="(i + 1) % 2 === 0"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="clipboardCopyContainer">
+            <div id="copiedMessage">
+              {{ "UserGenerator.copied" | translate }} &#x2714;
+            </div>
+            <button
+              class="btn btn-sm btn-light btn-outline-success"
+              id="copyText"
+              (click)="copyToClipboard()"
+            >
+              {{ "UserGenerator.copyToClipboard" | translate }}
+            </button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="clipboardCopyContainer">
-    <div id="copiedMessage">Copied &#x2714;</div>
-    <button id="copyText" (click)="copyToClipboard()">Copy to Clipboard</button>
   </div>
 </div>

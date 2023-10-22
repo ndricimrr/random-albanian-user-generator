@@ -1,31 +1,53 @@
 <div id="parentContainer">
-  <h2>Generate random male/female names</h2>
+  <h2>Gjenero emra vajzash dhe djemsh</h2>
 
-  <div class="controlsPanel">
-    <button id="generateButton" (click)="generateRandomNames()">
-      Generate
-    </button>
-
-    <div class="controlsPanelOptions">
-      <select [(ngModel)]="chosenGender" id="genderDropDown">
-        <option value="" disabled selected>select female/male</option>
-        <option *ngFor="let item of genders" [value]="item">{{ item }}</option>
-      </select>
-
-      <input
-        type="number"
-        min="0"
-        id="desiredRandomNumberInputField"
-        max="{{ MAX_RANDOM_NAMES_ALLOWED }}"
-        step="1"
-        [(ngModel)]="numberOfNamesDesired"
-        value="0"
-      />
+  <div class="container">
+    <table class="table table-borderless">
+      <tbody>
+        <tr>
+          <td>
+            <label class="form-label">Gender</label>
+          </td>
+          <td>
+            <select
+              class="form-select"
+              [(ngModel)]="chosenGender"
+              (ngModelChange)="onGenderChanged(chosenGender)"
+            >
+              <option *ngFor="let item of genders" [value]="item">
+                {{ item }}
+              </option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="numberOfItems" class="form-label">Quantity</label>
+          </td>
+          <td>
+            <input
+              class="form-control"
+              type="number"
+              min="0"
+              id="desiredRandomNumberInputField"
+              max="{{ MAX_RANDOM_NAMES_ALLOWED }}"
+              step="1"
+              [(ngModel)]="numberOfNamesDesired"
+              value="0"
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="text-center">
+      <button (click)="generateRandomNames()" class="btn btn-success">
+        Generate
+      </button>
     </div>
   </div>
 
   <div id="resultsContainer">
-    <div id="resultsSubContainer">
+    <div #resultBox id="resultsSubContainer">
       <div>
         <p id="resultsParagraph" *ngFor="let name of generatedRandomNames">
           {{ name }}
@@ -35,6 +57,12 @@
   </div>
   <div class="clipboardCopyContainer">
     <div id="copiedMessage">Copied &#x2714;</div>
-    <button id="copyText" (click)="copyToClipboard()">Copy to Clipboard</button>
+    <button
+      class="btn btn-sm btn-light btn-outline-success"
+      id="copyText"
+      (click)="copyToClipboard()"
+    >
+      Copy to Clipboard
+    </button>
   </div>
 </div>

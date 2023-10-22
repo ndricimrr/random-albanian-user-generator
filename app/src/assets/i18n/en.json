@@ -1,0 +1,26 @@
+{
+  "HELLO": "hello {{value}}",
+  "UserGenerator": {
+    "header": "Generate random male/female users",
+    "generateBtn": "Generate",
+    "viewTypePrompt": "Select View Type",
+    "genderSelectPrompt": "Select Gender",
+    "countySelectPrompt": "Select County",
+    "name": "Name",
+    "username": "Username",
+    "birthday": "Birthday",
+    "age": "Age",
+    "address": "Address",
+    "email": "Email",
+    "phone": "Phone",
+    "copyToClipboard": "Copy to Clipboard",
+    "copied": "Copied"
+  },
+  "Common": {
+    "gender": "Gender"
+  },
+  "gender": {
+    "female": "Female",
+    "male": "Male"
+  }
+}

@@ -4,6 +4,7 @@ import { NameGeneratorComponent } from '../name-generator/name-generator.compone
 import { UserGeneratorComponent } from '../user-generator/user-generator.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'generate-names', pathMatch: 'full' },
   { path: 'generate-names', component: NameGeneratorComponent },
   { path: 'generate-users', component: UserGeneratorComponent },
 ];
