@@ -1,3 +1,7 @@
+:host {
+  width: 100%;
+}
+
 #parentContainer {
   position: relative;
   top: 150px;
@@ -8,13 +12,6 @@ h2 {
   justify-content: center;
   color: rgb(0, 0, 0);
 }
-
-/* #genderDropDown {
-  right: 0;
-  padding: 4px;
-  width: 80px;
-  margin-right: 10px;
-} */
 
 #desiredRandomNumberInputField {
   padding: 4px;

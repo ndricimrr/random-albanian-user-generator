@@ -22,11 +22,11 @@ export class UserGeneratorComponent {
   counties = fullListCounties;
   chosenCounty = fullListCounties[0];
   chosenGender = Gender.FEMALE;
-  chosenViewType: ViewType = ViewType.GRAPHICAL_TABLE;
+  chosenViewType: ViewType = ViewType.JSON;
   ViewType = ViewType;
   viewTypes = [
-    ViewType.GRAPHICAL_TABLE,
     ViewType.JSON,
+    ViewType.GRAPHICAL_TABLE,
     ViewType.GRAPHICAL_LIST,
   ];
   generatedRandomUsersString: string = '';
