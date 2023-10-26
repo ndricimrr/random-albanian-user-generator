@@ -74,6 +74,11 @@ table {
   width: 100%;
 }
 
+div.col-md-6 > table th {
+  font-size: 10pt;
+  width: 20px;
+}
+
 .clipboardCopyContainer {
   display: flex;
   justify-content: right;
@@ -100,14 +105,43 @@ table {
   }
 }
 
-@media (max-width: 1000px) {
-  /* Set the tables to display as one column */
-  .table-responsive {
-    display: block;
-    overflow-x: auto;
+@media (min-width: 900px) {
+  .graphicViewTable {
+    /* min-width: 500px; */
   }
 }
 
 .fixed-width-table {
-  max-width: 400px;
+  /* min-width: 300px; */
+}
+
+.customTDFont {
+  font-size: 14px;
+}
+
+@media (max-width: 1000px) {
+  .table-view-column {
+    flex-basis: 100%; /* Make it 100% width */
+    max-width: 100%; /* Set max width to 100% */
+  }
+
+  .customTDFont {
+    /* font-size: 12px; */
+  }
+}
+
+@media (max-width: 1000x) {
+  .responsive-grid {
+    flex-direction: column;
+  }
+
+  /* .customTDFont {
+    font-size: 10px;
+  } */
+}
+
+@media (min-width: 1500px) {
+  .customTDFont {
+    font-size: 16px;
+  }
 }
