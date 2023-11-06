@@ -105,16 +105,6 @@ div.col-md-6 > table th {
   }
 }
 
-@media (min-width: 900px) {
-  .graphicViewTable {
-    /* min-width: 500px; */
-  }
-}
-
-.fixed-width-table {
-  /* min-width: 300px; */
-}
-
 .customTDFont {
   font-size: 14px;
 }
@@ -124,20 +114,12 @@ div.col-md-6 > table th {
     flex-basis: 100%; /* Make it 100% width */
     max-width: 100%; /* Set max width to 100% */
   }
-
-  .customTDFont {
-    /* font-size: 12px; */
-  }
 }
 
 @media (max-width: 1000x) {
   .responsive-grid {
     flex-direction: column;
   }
-
-  /* .customTDFont {
-    font-size: 10px;
-  } */
 }
 
 @media (min-width: 1500px) {
