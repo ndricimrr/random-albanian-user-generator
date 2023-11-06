@@ -30,7 +30,7 @@ export class UserGeneratorComponent {
     ViewType.GRAPHICAL_LIST,
   ];
   generatedRandomUsersString: string = '';
-  generatedRandomUsersObject: User[] = [];
+  randomUsersList: User[] = [];
   resultsParagraphReference: HTMLElement | null = null;
   translate: TranslateService = TranslateService.prototype;
 
@@ -68,7 +68,7 @@ export class UserGeneratorComponent {
       );
       randomNamesTempList.push(randomUser);
     }
-    this.generatedRandomUsersObject = randomNamesTempList;
+    this.randomUsersList = randomNamesTempList;
     this.generatedRandomUsersString = JSON.stringify(
       randomNamesTempList,
       undefined,

@@ -125,10 +125,7 @@
               id="graphicViewList"
               *ngIf="chosenViewType == ViewType.GRAPHICAL_LIST"
             >
-              <div
-                id="listView"
-                *ngFor="let user of generatedRandomUsersObject"
-              >
+              <div id="listView" *ngFor="let user of randomUsersList">
                 <img
                   src="{{ user.builtPicturePath }}"
                   width="60px"
@@ -167,127 +164,11 @@
             <!--  -->
             <!-- FULL GRAPHIC VIEW TABLE -->
 
-            <div
-              id="graphicViewTable"
+            <users-grid-table-view
+              [listOfUsers]="randomUsersList"
               *ngIf="chosenViewType == ViewType.GRAPHICAL_TABLE"
-              class="p-4"
             >
-              <div class="row responsive-grid">
-                <div class="col-md-6">
-                  <table
-                    *ngFor="
-                      let user of generatedRandomUsersObject.slice(
-                        0,
-                        generatedRandomUsersObject.length / 2
-                      );
-                      let i = index
-                    "
-                    style="margin-bottom: 35px"
-                    class="table table-striped table-vertical"
-                  >
-                    <tbody>
-                      <tr>
-                        <th scope="row">Foto</th>
-                        <td>
-                          <img
-                            src="{{ user.builtPicturePath }}"
-                            alt="Face of a person"
-                            class="img-thumbnail"
-                            width="100"
-                          />
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Emri i plote</th>
-                        <td>{{ user.name }} {{ user.surname }}</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Ditëlindja</th>
-                        <td>{{ user.birthday }}</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Mosha</th>
-                        <td>{{ user.age }}</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Adresa</th>
-                        <td>
-                          {{ user.address.name }} {{ user.address.number }}
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Imeili</th>
-                        <td class="customTDFont">{{ user.email }}</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Tel</th>
-                        <td>{{ user.phone }}</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Username</th>
-                        <td>{{ user.username }}</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div class="col-md-6">
-                  <table
-                    style="margin-bottom: 35px"
-                    *ngFor="
-                      let user of generatedRandomUsersObject.slice(
-                        generatedRandomUsersObject.length / 2
-                      );
-                      let i = index
-                    "
-                    class="table table-striped table-vertical"
-                  >
-                    <tbody>
-                      <tr>
-                        <th scope="row">Foto</th>
-                        <td>
-                          <img
-                            src="{{ user.builtPicturePath }}"
-                            alt="Face of a person"
-                            class="img-thumbnail"
-                            width="100"
-                          />
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Emri i plote</th>
-                        <td>{{ user.name }} {{ user.surname }}</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Ditëlindja</th>
-                        <td>{{ user.birthday }}</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Mosha</th>
-                        <td>{{ user.age }}</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Adresa</th>
-                        <td>
-                          {{ user.address.name }} {{ user.address.number }}
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Imeili</th>
-                        <td class="customTDFont">{{ user.email }}</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Tel</th>
-                        <td>{{ user.phone }}</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Username</th>
-                        <td>{{ user.username }}</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
+            </users-grid-table-view>
           </div>
 
           <div class="clipboardCopyContainer">

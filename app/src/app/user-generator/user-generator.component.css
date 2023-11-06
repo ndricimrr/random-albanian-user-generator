@@ -54,12 +54,6 @@ textarea {
   font-size: 0.9rem;
 }
 
-#graphicViewTable {
-  overflow: auto;
-  height: inherit;
-  width: 100%;
-}
-
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;

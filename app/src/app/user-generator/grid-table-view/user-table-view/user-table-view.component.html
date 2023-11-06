@@ -1,0 +1,50 @@
+<table
+  *ngFor="
+    let user of listOfUsers.slice(0, listOfUsers.length / 2);
+    let i = index
+  "
+  style="margin-bottom: 35px"
+  class="table table-striped table-vertical"
+>
+  <tbody>
+    <tr>
+      <th scope="row">Foto</th>
+      <td>
+        <img
+          src="{{ user.builtPicturePath }}"
+          alt="Face of a person"
+          class="img-thumbnail"
+          width="100"
+        />
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Emri i plote</th>
+      <td>{{ user.name }} {{ user.surname }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Ditëlindja</th>
+      <td>{{ user.birthday }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Mosha</th>
+      <td>{{ user.age }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Adresa</th>
+      <td>{{ user.address.name }} {{ user.address.number }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Imeili</th>
+      <td class="customTDFont">{{ user.email }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Tel</th>
+      <td>{{ user.phone }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Username</th>
+      <td>{{ user.username }}</td>
+    </tr>
+  </tbody>
+</table>

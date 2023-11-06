@@ -11,6 +11,8 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { FootNavComponent } from './foot-nav/foot-nav.component';
+import { GridTableViewComponent } from './user-generator/grid-table-view/users-grid-table-view.component';
+import { UserTableViewComponent } from './user-generator/grid-table-view/user-table-view/user-table-view.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -24,6 +26,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     NameGeneratorComponent,
     NavigationBarComponent,
     FootNavComponent,
+    GridTableViewComponent,
+    UserTableViewComponent,
   ],
   imports: [
     BrowserModule,

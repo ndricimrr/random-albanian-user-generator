@@ -1,0 +1,10 @@
+/* Needed to fit parent height */
+:host {
+  height: 100%;
+}
+
+#graphicViewTable {
+  overflow: auto;
+  height: inherit;
+  width: 100%;
+}
