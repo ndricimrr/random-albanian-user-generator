@@ -6,116 +6,22 @@
   <div class="container">
     <div class="row">
       <div class="col-md-4">
-        <div class="">
-          <table class="table table-borderless">
-            <tbody>
-              <tr>
-                <td>Gender</td>
-                <td>
-                  <select
-                    class="form-select"
-                    [(ngModel)]="chosenGender"
-                    id="genderDropDown"
-                  >
-                    <option value="" disabled selected>
-                      {{ "UserGenerator.genderSelectPrompt" | translate }}
-                    </option>
-                    <option *ngFor="let item of genders" [value]="item">
-                      {{ item | translate }}
-                    </option>
-                  </select>
-                </td>
-              </tr>
-              <tr>
-                <td>View</td>
-                <td>
-                  <select
-                    class="form-select"
-                    [(ngModel)]="chosenViewType"
-                    id="viewTypeDropDown"
-                  >
-                    <option value="" disabled selected>
-                      {{ "UserGenerator.viewTypePrompt" | translate }}
-                    </option>
-                    <option *ngFor="let item of viewTypes" [value]="item">
-                      {{ item }}
-                    </option>
-                  </select>
-                </td>
-              </tr>
-
-              <tr>
-                <td>
-                  <label for="numberOfItems" class="form-label">Quantity</label>
-                </td>
-                <td>
-                  <input
-                    class="form-control"
-                    type="number"
-                    min="0"
-                    id="desiredRandomNumberInputField"
-                    max="{{ MAX_RANDOM_NAMES_ALLOWED }}"
-                    step="1"
-                    [(ngModel)]="numberOfNamesDesired"
-                    value="0"
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label for="numberOfItems" class="form-label">Qarku</label>
-                </td>
-                <td>
-                  <select
-                    class="form-select"
-                    [(ngModel)]="chosenCounty"
-                    id="countyDropDown"
-                  >
-                    <option value="" disabled selected>
-                      {{ "UserGenerator.countySelectPrompt" | translate }}
-                    </option>
-                    <option *ngFor="let item of counties" [value]="item">
-                      {{ item }}
-                    </option>
-                  </select>
-                </td>
-              </tr>
-
-              <tr>
-                <td>
-                  <label for="numberOfItems" class="form-label">Age</label>
-                </td>
-                <td>
-                  <input
-                    class="form-control"
-                    type="number"
-                    min="18"
-                    id="desiredAgeInputField"
-                    max="{{ MAX_AGE_ALLOWED }}"
-                    step="1"
-                    [(ngModel)]="ageDesired"
-                    value="18"
-                  />
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <div class="text-center">
-            <button
-              class="btn btn-success"
-              id="generateButton"
-              (click)="generateRandomUsers()"
-            >
-              {{ "UserGenerator.generateBtn" | translate }}
-            </button>
-          </div>
+        <control-panel></control-panel>
+        <div class="text-center">
+          <button
+            class="btn btn-success"
+            id="generateButton"
+            (click)="generateRandomUsers()"
+          >
+            {{ "UserGenerator.generateBtn" | translate }}
+          </button>
         </div>
       </div>
       <div class="col-md-8 table-view-column">
         <div id="resultsContainer">
           <div id="resultsSubContainer">
             <textarea
-              *ngIf="chosenViewType == ViewType.JSON"
+              *ngIf="chosenViewType == ViewTypes.JSON"
               id="jsonView"
               type="text"
               editable="false"
@@ -123,7 +29,7 @@
             ></textarea>
             <div
               id="graphicViewList"
-              *ngIf="chosenViewType == ViewType.GRAPHICAL_LIST"
+              *ngIf="chosenViewType == ViewTypes.GRAPHICAL_LIST"
             >
               <div id="listView" *ngFor="let user of randomUsersList">
                 <img
@@ -161,12 +67,12 @@
                 <hr />
               </div>
             </div>
-            <!--  -->
-            <!-- FULL GRAPHIC VIEW TABLE -->
 
+            <!--  -->
+            <!-- Grid View with two columns of tables -->
             <users-grid-table-view
               [listOfUsers]="randomUsersList"
-              *ngIf="chosenViewType == ViewType.GRAPHICAL_TABLE"
+              *ngIf="chosenViewType == ViewTypes.GRAPHICAL_TABLE"
             >
             </users-grid-table-view>
           </div>

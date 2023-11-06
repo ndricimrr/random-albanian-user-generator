@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { User } from 'src/app/utils/user-interface';
 
 @Component({
   selector: 'user-table-view',
@@ -6,5 +7,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./user-table-view.component.css'],
 })
 export class UserTableViewComponent {
-  @Input() listOfUsers: any[] = [];
+  @Input() listOfUsers: User[] = [];
 }

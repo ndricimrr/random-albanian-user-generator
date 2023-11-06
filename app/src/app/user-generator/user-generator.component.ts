@@ -10,25 +10,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./user-generator.component.css'],
 })
 export class UserGeneratorComponent {
-  title = 'app';
+  ViewTypes = ViewType;
+  chosenGender = Gender.FEMALE;
+  chosenViewType: ViewType = ViewType.JSON;
+
   GENERATE_BUTTON_ID = 'generateButton';
   RANDOM_NAMES_RESULTS_PARAGRAPH = 'resultsParagraph';
   NUMBER_OF_NAMES_DESIRED_INPUT = 'numberOfNamesDesiredInputField';
-  numberOfNamesDesired = 2;
-  MAX_RANDOM_NAMES_ALLOWED = 10;
-  MAX_AGE_ALLOWED = 100;
-  ageDesired = 18;
-  genders = ['gender.female', 'gender.male'];
+
   counties = fullListCounties;
-  chosenCounty = fullListCounties[0];
-  chosenGender = Gender.FEMALE;
-  chosenViewType: ViewType = ViewType.JSON;
-  ViewType = ViewType;
-  viewTypes = [
-    ViewType.JSON,
-    ViewType.GRAPHICAL_TABLE,
-    ViewType.GRAPHICAL_LIST,
-  ];
   generatedRandomUsersString: string = '';
   randomUsersList: User[] = [];
   resultsParagraphReference: HTMLElement | null = null;
