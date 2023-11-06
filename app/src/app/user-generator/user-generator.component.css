@@ -1,3 +1,4 @@
+/* Needed for Table View */
 :host {
   width: 100%;
 }
@@ -59,15 +60,6 @@ textarea {
   width: 100%;
 }
 
-#tableView {
-  color: rgb(0, 0, 0);
-  word-wrap: break-word;
-  text-align: left;
-  vertical-align: center;
-  font-size: 0.9rem;
-  margin-bottom: 10px;
-}
-
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
@@ -95,35 +87,6 @@ div.col-md-6 > table th {
   padding: 2px;
 }
 
-@media screen and (max-width: 450px) {
-  #parentContainer {
-    width: 100%;
-  }
-
-  #genderDropDown {
-    margin-right: 1px;
-  }
-}
-
 .customTDFont {
   font-size: 14px;
-}
-
-@media (max-width: 1000px) {
-  .table-view-column {
-    flex-basis: 100%; /* Make it 100% width */
-    max-width: 100%; /* Set max width to 100% */
-  }
-}
-
-@media (max-width: 1000x) {
-  .responsive-grid {
-    flex-direction: column;
-  }
-}
-
-@media (min-width: 1500px) {
-  .customTDFont {
-    font-size: 16px;
-  }
 }

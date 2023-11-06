@@ -8,22 +8,6 @@ h2 {
   justify-content: center;
 }
 
-.controlsPanel {
-  display: flex;
-  justify-content: space-between;
-}
-
-#generateButton {
-  padding: 4px;
-}
-
-#genderDropDown {
-  right: 0;
-  padding: 4px;
-  width: 80px;
-  margin-right: 10px;
-}
-
 #desiredRandomNumberInputField {
   padding: 4px;
 }
