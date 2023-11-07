@@ -6,6 +6,7 @@
         <select
           class="form-select"
           [(ngModel)]="chosenGender"
+          (ngModelChange)="onChosenGenderChange()"
           id="genderDropDown"
         >
           <option value="" disabled selected>
@@ -23,6 +24,7 @@
         <select
           class="form-select"
           [(ngModel)]="chosenViewType"
+          (ngModelChange)="onChosenViewTypeChange()"
           id="viewTypeDropDown"
         >
           <option value="" disabled selected>
@@ -48,6 +50,7 @@
           max="{{ MAX_RANDOM_NAMES_ALLOWED }}"
           step="1"
           [(ngModel)]="numberOfNamesDesired"
+          (ngModelChange)="onChosenNumUsersChange()"
           value="0"
         />
       </td>
@@ -60,6 +63,7 @@
         <select
           class="form-select"
           [(ngModel)]="chosenCounty"
+          (ngModelChange)="onChosenCountyChange()"
           id="countyDropDown"
         >
           <option value="" disabled selected>
@@ -85,19 +89,10 @@
           max="{{ MAX_AGE_ALLOWED }}"
           step="1"
           [(ngModel)]="ageDesired"
+          (ngModelChange)="onDesiredAgeChange()"
           value="18"
         />
       </td>
     </tr>
   </tbody>
 </table>
-
-<div class="text-center">
-  <button
-    class="btn btn-success"
-    id="generateButton"
-    (click)="generateRandomUsers()"
-  >
-    {{ "UserGenerator.generateBtn" | translate }}
-  </button>
-</div>
