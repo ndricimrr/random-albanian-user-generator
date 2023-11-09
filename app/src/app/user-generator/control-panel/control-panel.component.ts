@@ -18,8 +18,11 @@ export class ControlPanelComponent {
     ViewType.GRAPHICAL_LIST,
   ];
 
-  @Input() chosenGender: string = Gender.FEMALE;
-  @Output() chosenGenderChange = new EventEmitter<string>();
+  MAX_AGE_ALLOWED = MAX_AGE_ALLOWED;
+  MAX_RANDOM_NAMES_ALLOWED = MAX_RANDOM_NAMES_ALLOWED;
+
+  chosenGender: Gender = Gender.FEMALE;
+  // @Output() chosenGenderChange = new EventEmitter<string>();
 
   @Input() chosenViewType: string = ViewType.JSON;
   @Output() chosenViewTypeChange = new EventEmitter<string>();
@@ -35,6 +38,17 @@ export class ControlPanelComponent {
 
   counties = fullListCounties;
   translate: TranslateService = TranslateService.prototype;
+
+  numberOfNamesDesired = 2;
+  // chosenGender = Gender.FEMALE;
+
+  GENERATE_BUTTON_ID = 'generateButton';
+  RANDOM_NAMES_RESULTS_PARAGRAPH = 'resultsParagraph';
+  NUMBER_OF_NAMES_DESIRED_INPUT = 'numberOfNamesDesiredInputField';
+
+  generatedRandomUsersString: string = '';
+  randomUsersList: User[] = [];
+  resultsParagraphReference: HTMLElement | null = null;
 
   constructor(translate: TranslateService) {
     // the lang to use, if the lang isn't available, it will use the current loader to get them
@@ -60,5 +74,56 @@ export class ControlPanelComponent {
 
   onDesiredAgeChange() {
     this.ageDesiredChange.emit(this.ageDesired);
+  }
+
+  ngOnInit() {
+    this.resultsParagraphReference = document.getElementById(
+      this.RANDOM_NAMES_RESULTS_PARAGRAPH
+    );
+    this.generateRandomUsers();
+    this.translate.use('sq');
+  }
+
+  /**
+   * Generates a desired number of random names from the given "randomNamesList" of names
+   * provided a chosen gender
+   */
+  generateRandomUsers() {
+    if (this.numberOfNamesDesired > this.MAX_RANDOM_NAMES_ALLOWED) {
+      alert('Maximum number of allowed random users allowed 10');
+      return;
+    }
+
+    let randomNamesTempList: User[] = [];
+
+    for (let index = 0; index < this.numberOfNamesDesired; index++) {
+      const randomUser = new User(
+        this.chosenGender,
+        this.ageDesired,
+        this.chosenCounty
+      );
+      randomNamesTempList.push(randomUser);
+    }
+    this.randomUsersList = randomNamesTempList;
+    this.generatedRandomUsersString = JSON.stringify(
+      randomNamesTempList,
+      undefined,
+      4
+    );
+  }
+
+  /**
+   * Copies contents of the generated random users into a stringified json format
+   */
+  copyToClipboard(): void {
+    navigator.clipboard.writeText(this.generatedRandomUsersString);
+    const copiedMessageElement = document.getElementById('copiedMessage');
+    if (!copiedMessageElement) {
+      return;
+    }
+    copiedMessageElement.style.visibility = 'visible';
+    setTimeout(() => {
+      copiedMessageElement.style.visibility = 'hidden';
+    }, 1000);
   }
 }

@@ -3,6 +3,7 @@ import { ViewType } from '../utils/component-interface';
 import { Gender, User } from '../utils/user-interface';
 import { TranslateService } from '@ngx-translate/core';
 import { Component } from '@angular/core';
+import { MAX_AGE_ALLOWED, MAX_RANDOM_NAMES_ALLOWED } from './constants';
 
 @Component({
   selector: 'app-user-generator',
@@ -13,6 +14,9 @@ export class UserGeneratorComponent {
   ViewTypes = ViewType;
   chosenGender = Gender.FEMALE;
   chosenViewType: ViewType = ViewType.JSON;
+
+  MAX_AGE_ALLOWED = MAX_AGE_ALLOWED;
+  MAX_RANDOM_NAMES_ALLOWED = MAX_RANDOM_NAMES_ALLOWED;
 
   GENERATE_BUTTON_ID = 'generateButton';
   RANDOM_NAMES_RESULTS_PARAGRAPH = 'resultsParagraph';
