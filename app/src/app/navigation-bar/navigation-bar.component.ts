@@ -10,11 +10,14 @@ export class NavigationBarComponent {
   currentLanguage: string;
 
   constructor(private languageService: TranslateService) {
-    this.currentLanguage = languageService.currentLang;
+    const storedLanguage = sessionStorage.getItem('language');
+    this.currentLanguage = storedLanguage || languageService.currentLang;
+    this.languageService.use(this.currentLanguage);
   }
 
   changeLanguage(language: string): void {
+    this.currentLanguage = language;
     this.languageService.use(language);
-    this.currentLanguage = this.languageService.currentLang;
+    sessionStorage.setItem('language', language);
   }
 }
