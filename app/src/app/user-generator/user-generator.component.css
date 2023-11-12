@@ -21,6 +21,7 @@ h2 {
 #resultsContainer {
   padding: 4px;
   height: 600px;
+  border: 1px solid rgba(179, 179, 179, 0.836);
 }
 
 #resultsSubContainer {
@@ -54,16 +55,11 @@ textarea {
   font-size: 0.9rem;
 }
 
-table {
+/* table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
-}
-
-div.col-md-6 > table th {
-  font-size: 10pt;
-  width: 20px;
-}
+} */
 
 .clipboardCopyContainer {
   display: flex;

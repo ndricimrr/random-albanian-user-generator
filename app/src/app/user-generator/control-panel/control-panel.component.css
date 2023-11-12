@@ -1,0 +1,9 @@
+/* Needed to fit parent height */
+:host {
+  height: 100%;
+  width: 100%;
+}
+
+#parent {
+  margin-bottom: 30px;
+}

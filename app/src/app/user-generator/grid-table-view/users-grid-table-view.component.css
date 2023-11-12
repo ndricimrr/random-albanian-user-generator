@@ -1,10 +1,22 @@
 /* Needed to fit parent height */
 :host {
   height: 100%;
+  width: 100%;
 }
 
 #graphicViewTable {
   overflow: auto;
   height: inherit;
   width: 100%;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 1000px) {
+  .responsive-grid {
+    flex-direction: column;
+  }
 }

@@ -1,98 +1,105 @@
-<table class="table table-borderless">
-  <tbody>
-    <tr>
-      <td>Gender</td>
-      <td>
-        <select
-          class="form-select"
-          [(ngModel)]="chosenGender"
-          (ngModelChange)="onChosenGenderChange()"
-          id="genderDropDown"
-        >
-          <option value="" disabled selected>
-            {{ "UserGenerator.genderSelectPrompt" | translate }}
-          </option>
-          <option *ngFor="let item of genders" [value]="item">
-            {{ item | translate }}
-          </option>
-        </select>
-      </td>
-    </tr>
-    <tr>
-      <td>View</td>
-      <td>
-        <select
-          class="form-select"
-          [(ngModel)]="chosenViewType"
-          (ngModelChange)="onChosenViewTypeChange()"
-          id="viewTypeDropDown"
-        >
-          <option value="" disabled selected>
-            {{ "UserGenerator.viewTypePrompt" | translate }}
-          </option>
-          <option *ngFor="let item of viewTypes" [value]="item">
-            {{ item }}
-          </option>
-        </select>
-      </td>
-    </tr>
+<div id="parent">
+  <table class="table table-borderless">
+    <tbody>
+      <tr>
+        <td>Gender</td>
+        <td>
+          <select
+            class="form-select"
+            [(ngModel)]="chosenGender"
+            id="genderDropDown"
+          >
+            <option value="" disabled selected>
+              {{ "UserGenerator.genderSelectPrompt" | translate }}
+            </option>
+            <option *ngFor="let item of genders" [value]="item">
+              {{ item | translate }}
+            </option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>View</td>
+        <td>
+          <select
+            class="form-select"
+            [(ngModel)]="chosenViewType"
+            (ngModelChange)="onChosenViewTypeChange()"
+            id="viewTypeDropDown"
+          >
+            <option value="" disabled selected>
+              {{ "UserGenerator.viewTypePrompt" | translate }}
+            </option>
+            <option *ngFor="let item of viewTypes" [value]="item">
+              {{ item }}
+            </option>
+          </select>
+        </td>
+      </tr>
 
-    <tr>
-      <td>
-        <label for="numberOfItems" class="form-label">Quantity</label>
-      </td>
-      <td>
-        <input
-          class="form-control"
-          type="number"
-          min="0"
-          id="desiredRandomNumberInputField"
-          max="{{ MAX_RANDOM_NAMES_ALLOWED }}"
-          step="1"
-          [(ngModel)]="numberOfNamesDesired"
-          (ngModelChange)="onChosenNumUsersChange()"
-          value="0"
-        />
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <label for="numberOfItems" class="form-label">Qarku</label>
-      </td>
-      <td>
-        <select
-          class="form-select"
-          [(ngModel)]="chosenCounty"
-          (ngModelChange)="onChosenCountyChange()"
-          id="countyDropDown"
-        >
-          <option value="" disabled selected>
-            {{ "UserGenerator.countySelectPrompt" | translate }}
-          </option>
-          <option *ngFor="let item of counties" [value]="item">
-            {{ item }}
-          </option>
-        </select>
-      </td>
-    </tr>
+      <tr>
+        <td>
+          <label for="numberOfItems" class="form-label">Quantity</label>
+        </td>
+        <td>
+          <input
+            class="form-control"
+            type="number"
+            min="0"
+            id="desiredRandomNumberInputField"
+            max="{{ MAX_RANDOM_NAMES_ALLOWED }}"
+            step="1"
+            [(ngModel)]="numberOfNamesDesired"
+            value="0"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="numberOfItems" class="form-label">Qarku</label>
+        </td>
+        <td>
+          <select
+            class="form-select"
+            [(ngModel)]="chosenCounty"
+            id="countyDropDown"
+          >
+            <option value="" disabled selected>
+              {{ "UserGenerator.countySelectPrompt" | translate }}
+            </option>
+            <option *ngFor="let item of counties" [value]="item">
+              {{ item }}
+            </option>
+          </select>
+        </td>
+      </tr>
 
-    <tr>
-      <td>
-        <label for="numberOfItems" class="form-label">Age</label>
-      </td>
-      <td>
-        <input
-          class="form-control"
-          type="number"
-          min="18"
-          id="desiredAgeInputField"
-          max="{{ MAX_AGE_ALLOWED }}"
-          step="1"
-          [(ngModel)]="ageDesired"
-          (ngModelChange)="onDesiredAgeChange()"
-          value="18"
-        />
-      </td>
-    </tr>
-  </tbody>
-</table>
+      <tr>
+        <td>
+          <label for="numberOfItems" class="form-label">Age</label>
+        </td>
+        <td>
+          <input
+            class="form-control"
+            type="number"
+            min="18"
+            id="desiredAgeInputField"
+            max="{{ MAX_AGE_ALLOWED }}"
+            step="1"
+            [(ngModel)]="ageDesired"
+            value="18"
+          />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="text-center">
+    <button
+      class="btn btn-success"
+      id="generateButton"
+      (click)="generateRandomUsers()"
+    >
+      {{ "UserGenerator.generateBtn" | translate }}
+    </button>
+  </div>
+</div>

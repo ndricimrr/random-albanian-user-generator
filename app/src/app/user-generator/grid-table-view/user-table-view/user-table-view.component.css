@@ -1,0 +1,21 @@
+table th {
+  font-size: 9pt;
+  width: 200px;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  word-wrap: break-word;
+}
+
+.customTDFont {
+  font-size: 14px;
+}
+
+@media (min-width: 1500px) {
+  .customTDFont {
+    font-size: 16px;
+  }
+}

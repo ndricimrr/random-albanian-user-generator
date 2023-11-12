@@ -11,6 +11,15 @@ import { MAX_AGE_ALLOWED, MAX_RANDOM_NAMES_ALLOWED } from '../constants';
   styleUrls: ['./control-panel.component.css'],
 })
 export class ControlPanelComponent {
+  usersList: User[] = [];
+  @Output() userListUpdated = new EventEmitter<User[]>();
+
+  chosenViewType: ViewType = ViewType.JSON;
+  @Output() chosenViewTypeUpdated = new EventEmitter<ViewType>();
+  onChosenViewTypeChange() {
+    this.chosenViewTypeUpdated.emit(this.chosenViewType);
+  }
+
   genders = ['gender.female', 'gender.male'];
   viewTypes = [
     ViewType.JSON,
@@ -22,33 +31,14 @@ export class ControlPanelComponent {
   MAX_RANDOM_NAMES_ALLOWED = MAX_RANDOM_NAMES_ALLOWED;
 
   chosenGender: Gender = Gender.FEMALE;
-  // @Output() chosenGenderChange = new EventEmitter<string>();
 
-  @Input() chosenViewType: string = ViewType.JSON;
-  @Output() chosenViewTypeChange = new EventEmitter<string>();
-
-  @Input() chosenNumberOfUsers: number = 2;
-  @Output() chosenNumberOfUsersChange = new EventEmitter<number>();
-
-  @Input() chosenCounty: string = fullListCounties[0];
-  @Output() chosenCountyChange = new EventEmitter<string>();
-
-  @Input() ageDesired: number = 18;
-  @Output() ageDesiredChange = new EventEmitter<number>();
-
+  chosenNumberOfUsers: number = 2;
+  chosenCounty: string = fullListCounties[0];
+  ageDesired: number = 18;
   counties = fullListCounties;
   translate: TranslateService = TranslateService.prototype;
 
   numberOfNamesDesired = 2;
-  // chosenGender = Gender.FEMALE;
-
-  GENERATE_BUTTON_ID = 'generateButton';
-  RANDOM_NAMES_RESULTS_PARAGRAPH = 'resultsParagraph';
-  NUMBER_OF_NAMES_DESIRED_INPUT = 'numberOfNamesDesiredInputField';
-
-  generatedRandomUsersString: string = '';
-  randomUsersList: User[] = [];
-  resultsParagraphReference: HTMLElement | null = null;
 
   constructor(translate: TranslateService) {
     // the lang to use, if the lang isn't available, it will use the current loader to get them
@@ -56,31 +46,9 @@ export class ControlPanelComponent {
     this.translate = translate;
   }
 
-  onChosenGenderChange() {
-    this.chosenGenderChange.emit(this.chosenGender);
-  }
-
-  onChosenViewTypeChange() {
-    this.chosenViewTypeChange.emit(this.chosenViewType);
-  }
-
-  onChosenNumUsersChange() {
-    this.chosenNumberOfUsersChange.emit(this.chosenNumberOfUsers);
-  }
-
-  onChosenCountyChange() {
-    this.chosenCountyChange.emit(this.chosenCounty);
-  }
-
-  onDesiredAgeChange() {
-    this.ageDesiredChange.emit(this.ageDesired);
-  }
-
   ngOnInit() {
-    this.resultsParagraphReference = document.getElementById(
-      this.RANDOM_NAMES_RESULTS_PARAGRAPH
-    );
     this.generateRandomUsers();
+    console.log('TEst ', this.usersList);
     this.translate.use('sq');
   }
 
@@ -104,26 +72,7 @@ export class ControlPanelComponent {
       );
       randomNamesTempList.push(randomUser);
     }
-    this.randomUsersList = randomNamesTempList;
-    this.generatedRandomUsersString = JSON.stringify(
-      randomNamesTempList,
-      undefined,
-      4
-    );
-  }
-
-  /**
-   * Copies contents of the generated random users into a stringified json format
-   */
-  copyToClipboard(): void {
-    navigator.clipboard.writeText(this.generatedRandomUsersString);
-    const copiedMessageElement = document.getElementById('copiedMessage');
-    if (!copiedMessageElement) {
-      return;
-    }
-    copiedMessageElement.style.visibility = 'visible';
-    setTimeout(() => {
-      copiedMessageElement.style.visibility = 'hidden';
-    }, 1000);
+    this.usersList = randomNamesTempList;
+    this.userListUpdated.emit(this.usersList);
   }
 }

@@ -6,16 +6,10 @@
   <div class="container">
     <div class="row">
       <div class="col-md-4">
-        <control-panel></control-panel>
-        <div class="text-center">
-          <button
-            class="btn btn-success"
-            id="generateButton"
-            (click)="generateRandomUsers()"
-          >
-            {{ "UserGenerator.generateBtn" | translate }}
-          </button>
-        </div>
+        <control-panel
+          (userListUpdated)="onUserListUpdated($event)"
+          (chosenViewTypeUpdated)="onChosenViewTypeUpdated($event)"
+        ></control-panel>
       </div>
       <div class="col-md-8 table-view-column">
         <div id="resultsContainer">
@@ -27,11 +21,16 @@
               editable="false"
               [(ngModel)]="generatedRandomUsersString"
             ></textarea>
+            <users-grid-table-view
+              [listOfUsers]="userList"
+              *ngIf="chosenViewType == ViewTypes.GRAPHICAL_TABLE"
+            >
+            </users-grid-table-view>
             <div
               id="graphicViewList"
               *ngIf="chosenViewType == ViewTypes.GRAPHICAL_LIST"
             >
-              <div id="listView" *ngFor="let user of randomUsersList">
+              <div id="listView" *ngFor="let user of userList">
                 <img
                   src="{{ user.builtPicturePath }}"
                   width="60px"
@@ -67,14 +66,6 @@
                 <hr />
               </div>
             </div>
-
-            <!--  -->
-            <!-- Grid View with two columns of tables -->
-            <users-grid-table-view
-              [listOfUsers]="randomUsersList"
-              *ngIf="chosenViewType == ViewTypes.GRAPHICAL_TABLE"
-            >
-            </users-grid-table-view>
           </div>
 
           <div class="clipboardCopyContainer">
