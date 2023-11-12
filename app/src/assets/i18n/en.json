@@ -1,23 +1,35 @@
 {
   "HELLO": "hello {{value}}",
+  "NameGenerator": {
+    "header": "Generate albanian girl/boy names"
+  },
   "UserGenerator": {
-    "header": "Generate random male/female users",
+    "header": "Generate random male/female users"
+  },
+  "Common": {
+    "gender": "Gender",
+    "age": "Age",
+    "copyToClipboard": "Copy to Clipboard",
+    "copied": "Copied"
+  },
+  "ControlPanel": {
+    "view": "View",
     "generateBtn": "Generate",
     "viewTypePrompt": "Select View Type",
     "genderSelectPrompt": "Select Gender",
     "countySelectPrompt": "Select County",
+    "quantity": "Quantity",
+    "county": "County"
+  },
+  "UserData": {
+    "fullName": "Full Name",
     "name": "Name",
     "username": "Username",
     "birthday": "Birthday",
     "age": "Age",
     "address": "Address",
     "email": "Email",
-    "phone": "Phone",
-    "copyToClipboard": "Copy to Clipboard",
-    "copied": "Copied"
-  },
-  "Common": {
-    "gender": "Gender"
+    "phone": "Phone"
   },
   "gender": {
     "female": "Female",

@@ -36,19 +36,13 @@ export class ControlPanelComponent {
   chosenCounty: string = fullListCounties[0];
   ageDesired: number = 18;
   counties = fullListCounties;
-  translate: TranslateService = TranslateService.prototype;
 
   numberOfNamesDesired = 2;
 
-  constructor(translate: TranslateService) {
-    // the lang to use, if the lang isn't available, it will use the current loader to get them
-    translate.use('sq');
-    this.translate = translate;
-  }
+  constructor(translate: TranslateService) {}
 
   ngOnInit() {
     this.generateRandomUsers();
-    this.translate.use('sq');
   }
 
   /**

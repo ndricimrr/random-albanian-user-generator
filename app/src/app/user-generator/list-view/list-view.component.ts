@@ -3,12 +3,12 @@ import { TranslateService } from '@ngx-translate/core';
 import { User } from 'src/app/utils/user-interface';
 
 @Component({
-  selector: 'user-table-view',
-  templateUrl: './user-table-view.component.html',
-  styleUrls: ['./user-table-view.component.css'],
+  selector: 'list-view',
+  templateUrl: './list-view.component.html',
+  styleUrls: ['./list-view.component.css'],
 })
-export class UserTableViewComponent {
-  @Input() listOfUsers: User[] = [];
+export class ListViewComponent {
+  @Input() userList: User[] = [];
 
   constructor(translate: TranslateService) {}
 }

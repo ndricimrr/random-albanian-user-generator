@@ -29,13 +29,7 @@ export class UserGeneratorComponent {
   translate: TranslateService = TranslateService.prototype;
 
   constructor(translate: TranslateService) {
-    // the lang to use, if the lang isn't available, it will use the current loader to get them
-    translate.use('sq');
     this.translate = translate;
-  }
-
-  ngOnInit() {
-    this.translate.use('sq');
   }
 
   /**

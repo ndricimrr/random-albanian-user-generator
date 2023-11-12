@@ -3,7 +3,6 @@ import { fullListFemaleNames } from 'lists/female';
 import { fullListFemalePaths } from 'lists/female_image_paths';
 import { fullListMaleNames } from 'lists/male';
 import { fullListSurnames } from 'lists/surnames';
-
 import { fullListMalePaths } from 'lists/male_image_paths';
 import { fullListStreetsByCity } from 'lists/streets';
 import { Address, AgeGroup, Gender, PicturePath } from './user-interface';
@@ -58,9 +57,9 @@ export function getRandomEmail(name: string, surname: string): string {
   const separators = ['.', '_', '', '-'];
   const separatorIndex = getRandomNumber(0, separators.length - 1);
   const nameSurname =
-    name.toLowerCase() + separators[separatorIndex] + surname.toLowerCase();
+    name[0].toLowerCase() + separators[separatorIndex] + surname.toLowerCase();
   const surnameName =
-    surname.toLowerCase() + separators[separatorIndex] + name.toLowerCase();
+    surname[0].toLowerCase() + separators[separatorIndex] + name.toLowerCase();
   const randomNumber = getRandomNumber(0, 20);
   const isRandomNumberAdded = !!getRandomNumber(0, 1);
   const isNameFirst = !!getRandomNumber(0, 1);

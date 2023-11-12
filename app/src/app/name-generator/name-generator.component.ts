@@ -3,6 +3,7 @@ import { fullListFemaleNames } from 'lists/female';
 import { MALE_NAMES_MAX_LENGTH } from 'lists/male';
 import { FEMALE_NAMES_MAX_LENGTH } from 'lists/female';
 import { Component, ViewChild, ElementRef } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-name-generator',
@@ -22,6 +23,8 @@ export class NameGeneratorComponent {
   resultsParagraphReference: HTMLElement | null = null;
 
   @ViewChild('resultBox') resultBox: ElementRef | undefined = undefined;
+
+  constructor(translate: TranslateService) {}
 
   ngOnInit() {
     this.resultsParagraphReference = document.getElementById(

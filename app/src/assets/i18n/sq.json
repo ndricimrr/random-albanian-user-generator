@@ -1,23 +1,35 @@
 {
   "HELLO": "Pershendetje {{value}}",
+  "NameGenerator": {
+    "header": "Gjenero emra vajzash dhe djemsh"
+  },
   "UserGenerator": {
-    "header": "Gjenero të dhëna përdoruesish të rastësishëm",
+    "header": "Gjenero të dhëna përdoruesish të rastësishëm"
+  },
+  "Common": {
+    "gender": "Gjinia",
+    "age": "Mosha",
+    "copyToClipboard": "Kopjo",
+    "copied": "U kopjua"
+  },
+  "ControlPanel": {
+    "view": "Pamja",
     "generateBtn": "Gjenero",
     "viewTypePrompt": "Zgjidh formatin",
     "genderSelectPrompt": "Zgjidh gjininë",
     "countySelectPrompt": "Zgjidh qarkun",
+    "quantity": "Sasia",
+    "county": "Qarku"
+  },
+  "UserData": {
+    "fullName": "Emri i plotë",
     "name": "Emri",
     "username": "Username",
     "birthday": "Ditëlindja",
     "age": "Mosha",
     "address": "Adresa",
     "email": "Imeili",
-    "phone": "Tel",
-    "copyToClipboard": "Kopjo",
-    "copied": "U kopjua"
-  },
-  "Common": {
-    "gender": "Gjinia"
+    "phone": "Tel"
   },
   "gender": {
     "female": "Femër",

@@ -1,12 +1,12 @@
 <div id="parentContainer">
-  <h2>Gjenero emra vajzash dhe djemsh</h2>
+  <h2>{{ "NameGenerator.header" | translate }}</h2>
 
   <div class="container">
     <table class="table table-borderless">
       <tbody>
         <tr>
           <td>
-            <label class="form-label">Gender</label>
+            <label class="form-label">{{ "Common.gender" | translate }}</label>
           </td>
           <td>
             <select
@@ -22,7 +22,9 @@
         </tr>
         <tr>
           <td>
-            <label for="numberOfItems" class="form-label">Quantity</label>
+            <label for="numberOfItems" class="form-label">{{
+              "ControlPanel.quantity" | translate
+            }}</label>
           </td>
           <td>
             <input
@@ -41,7 +43,7 @@
     </table>
     <div class="text-center">
       <button (click)="generateRandomNames()" class="btn btn-success">
-        Generate
+        {{ "ControlPanel.generateBtn" | translate }}
       </button>
     </div>
   </div>
@@ -56,13 +58,13 @@
     </div>
   </div>
   <div class="clipboardCopyContainer">
-    <div id="copiedMessage">Copied &#x2714;</div>
+    <div id="copiedMessage">{{ "Common.copied" | translate }} &#x2714;</div>
     <button
       class="btn btn-sm btn-light btn-outline-success"
       id="copyText"
       (click)="copyToClipboard()"
     >
-      Copy to Clipboard
+      {{ "Common.copyToClipboard" | translate }}
     </button>
   </div>
 </div>

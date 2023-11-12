@@ -1,0 +1,19 @@
+/* Needed to fit parent height */
+:host {
+  height: 100%;
+  width: 100%;
+}
+
+#listView {
+  color: rgb(0, 0, 0);
+  word-wrap: break-word;
+  text-align: left;
+  vertical-align: center;
+  font-size: 0.9rem;
+}
+
+#graphicViewList {
+  overflow: auto;
+  height: inherit;
+  width: 100%;
+}

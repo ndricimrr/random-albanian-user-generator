@@ -1,10 +1,18 @@
 <div id="graphicViewTable" class="p-4">
   <div class="row responsive-grid">
     <div class="col-md-6 col-xs-12">
-      <user-table-view [listOfUsers]="listOfUsers"> </user-table-view>
+      <user-table-view
+        [listOfUsers]="
+          _listOfUsers.slice(0, _listOfUsers.length / 2 + increment)
+        "
+      >
+      </user-table-view>
     </div>
     <div class="col-md-6 col-xs-12">
-      <user-table-view [listOfUsers]="listOfUsers"> </user-table-view>
+      <user-table-view
+        [listOfUsers]="_listOfUsers.slice(_listOfUsers.length / 2 + increment)"
+      >
+      </user-table-view>
     </div>
   </div>
 </div>

@@ -26,58 +26,22 @@
               *ngIf="chosenViewType == ViewTypes.GRAPHICAL_TABLE"
             >
             </users-grid-table-view>
-            <div
-              id="graphicViewList"
+            <list-view
               *ngIf="chosenViewType == ViewTypes.GRAPHICAL_LIST"
-            >
-              <div id="listView" *ngFor="let user of userList">
-                <img
-                  src="{{ user.builtPicturePath }}"
-                  width="60px"
-                  alt="face of a person"
-                />
-                <p>
-                  <b>{{ "UserGenerator.name" | translate }}: </b>{{ user.name }}
-                  {{ user.surname }}
-                </p>
-                <p>
-                  <b>{{ "UserGenerator.username" | translate }}: </b
-                  >{{ user.username }}
-                </p>
-                <p>
-                  <b>{{ "UserGenerator.birthday" | translate }}: </b
-                  >{{ user.birthday }}
-                </p>
-                <p>
-                  <b>{{ "UserGenerator.age" | translate }}: </b>{{ user.age }}
-                </p>
-                <p>
-                  <b>{{ "UserGenerator.address" | translate }} : </b
-                  >{{ user.address.name }} {{ user.address.number }}
-                </p>
-                <p>
-                  <b>{{ "UserGenerator.email" | translate }}: </b
-                  >{{ user.email }}
-                </p>
-                <p>
-                  <b>{{ "UserGenerator.phone" | translate }}: </b
-                  >{{ user.phone }}
-                </p>
-                <hr />
-              </div>
-            </div>
+              [userList]="userList"
+            ></list-view>
           </div>
 
           <div class="clipboardCopyContainer">
             <div id="copiedMessage">
-              {{ "UserGenerator.copied" | translate }} &#x2714;
+              {{ "Common.copied" | translate }} &#x2714;
             </div>
             <button
               class="btn btn-sm btn-light btn-outline-success"
               id="copyText"
               (click)="copyToClipboard()"
             >
-              {{ "UserGenerator.copyToClipboard" | translate }}
+              {{ "Common.copyToClipboard" | translate }}
             </button>
           </div>
         </div>

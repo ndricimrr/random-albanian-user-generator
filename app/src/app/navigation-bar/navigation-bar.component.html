@@ -4,19 +4,6 @@
   <div class="container">
     <a class="navbar-brand" href="#">Random Generator</a>
 
-    <!-- Collapsible button for smaller screens -->
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNav"
-      aria-controls="navbarNav"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
@@ -26,6 +13,37 @@
           <a class="nav-link" href="generate-users">Generate Users</a>
         </li>
       </ul>
+    </div>
+
+    <div class="btn-group" role="group" aria-label="Language Switch">
+      <button
+        type="button"
+        class="btn btn-primary"
+        (click)="changeLanguage('en')"
+        [ngClass]="{ active: currentLanguage === 'en' }"
+      >
+        English
+      </button>
+      <button
+        type="button"
+        class="btn btn-primary"
+        (click)="changeLanguage('sq')"
+        [ngClass]="{ active: currentLanguage === 'sq' }"
+      >
+        Shqip
+      </button>
+      <!-- Collapsible button for smaller screens -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
     </div>
   </div>
 </nav>

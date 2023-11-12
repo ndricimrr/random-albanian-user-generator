@@ -7,5 +7,19 @@ import { User } from 'src/app/utils/user-interface';
   styleUrls: ['./users-grid-table-view.component.css'],
 })
 export class GridTableViewComponent {
-  @Input() listOfUsers: User[] = [];
+  _listOfUsers: User[] = [];
+
+  // Add input setter and getter to react upon list changing.
+  // Intention is to keep the column filling left to right instead of the opposite
+  @Input()
+  set listOfUsers(value: User[]) {
+    this._listOfUsers = value;
+    this.increment = this._listOfUsers.length % 2 === 0 ? 0 : 1;
+  }
+
+  get listOfUsers(): User[] {
+    return this._listOfUsers;
+  }
+
+  increment: number = 1;
 }

@@ -1,0 +1,33 @@
+<div id="graphicViewList">
+  <div id="listView" *ngFor="let user of userList">
+    <img
+      src="{{ user.builtPicturePath }}"
+      width="60px"
+      alt="face of a person"
+    />
+    <p>
+      <b>{{ "UserData.name" | translate }}: </b>{{ user.name }}
+      {{ user.surname }}
+    </p>
+    <p>
+      <b>{{ "UserData.username" | translate }}: </b>{{ user.username }}
+    </p>
+    <p>
+      <b>{{ "UserData.birthday" | translate }}: </b>{{ user.birthday }}
+    </p>
+    <p>
+      <b>{{ "UserData.age" | translate }}: </b>{{ user.age }}
+    </p>
+    <p>
+      <b>{{ "UserData.address" | translate }} : </b>{{ user.address.name }}
+      {{ user.address.number }}
+    </p>
+    <p>
+      <b>{{ "UserData.email" | translate }}: </b>{{ user.email }}
+    </p>
+    <p>
+      <b>{{ "UserData.phone" | translate }}: </b>{{ user.phone }}
+    </p>
+    <hr />
+  </div>
+</div>

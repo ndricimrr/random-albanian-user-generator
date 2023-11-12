@@ -14,6 +14,7 @@ import { FootNavComponent } from './foot-nav/foot-nav.component';
 import { GridTableViewComponent } from './user-generator/grid-table-view/users-grid-table-view.component';
 import { UserTableViewComponent } from './user-generator/grid-table-view/user-table-view/user-table-view.component';
 import { ControlPanelComponent } from './user-generator/control-panel/control-panel.component';
+import { ListViewComponent } from './user-generator/list-view/list-view.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -30,6 +31,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     GridTableViewComponent,
     UserTableViewComponent,
     ControlPanelComponent,
+    ListViewComponent,
   ],
   imports: [
     BrowserModule,
