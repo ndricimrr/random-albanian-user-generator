@@ -48,7 +48,6 @@ export class ControlPanelComponent {
 
   ngOnInit() {
     this.generateRandomUsers();
-    console.log('TEst ', this.usersList);
     this.translate.use('sq');
   }
 

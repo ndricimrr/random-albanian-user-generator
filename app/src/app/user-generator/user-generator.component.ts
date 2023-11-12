@@ -12,7 +12,6 @@ export class UserGeneratorComponent {
   generatedRandomUsersString: string = '';
   userList: User[] = [];
   onUserListUpdated(newList: User[]) {
-    console.log('Updated!!', this.userList, newList);
     this.userList = newList;
     this.generatedRandomUsersString = JSON.stringify(
       this.userList,
@@ -22,7 +21,6 @@ export class UserGeneratorComponent {
   }
   chosenViewType: ViewType = ViewType.JSON;
   onChosenViewTypeUpdated(newViewType: ViewType) {
-    console.log(this.chosenViewType, newViewType);
     this.chosenViewType = newViewType;
   }
 
