@@ -8,22 +8,24 @@
   },
   "Common": {
     "gender": "Gender",
-    "age": "Age",
     "copyToClipboard": "Copy to Clipboard",
     "copied": "Copied"
   },
   "ControlPanel": {
+    "panelHeader": "Select options",
     "view": "View",
     "generateBtn": "Generate",
     "viewTypePrompt": "Select View Type",
     "genderSelectPrompt": "Select Gender",
     "countySelectPrompt": "Select County",
     "quantity": "Quantity",
-    "county": "County"
+    "county": "County",
+    "advancedOption": "Customize generated JSON structure"
   },
   "UserData": {
     "fullName": "Full Name",
     "name": "Name",
+    "surname": "Surname",
     "username": "Username",
     "birthday": "Birthday",
     "age": "Age",

@@ -7,3 +7,13 @@
 #parent {
   margin-bottom: 30px;
 }
+
+.checkbox-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.form-check {
+  flex: 1 0 50%; /* Each checkbox takes up 50% of the container width */
+  box-sizing: border-box; /* Include padding and border in the width calculation */
+}

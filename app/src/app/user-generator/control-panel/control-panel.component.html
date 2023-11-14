@@ -1,4 +1,6 @@
 <div id="parent">
+  <h6>{{ "ControlPanel.panelHeader" | translate }}</h6>
+
   <table class="table table-borderless">
     <tbody>
       <tr>
@@ -81,7 +83,7 @@
       <tr>
         <td>
           <label for="numberOfItems" class="form-label">
-            {{ "Common.age" | translate }}</label
+            {{ "UserData.age" | translate }}</label
           >
         </td>
         <td>
@@ -98,17 +100,30 @@
         </td>
       </tr>
       <tr>
-        <div class="form-check" *ngFor="let item of checkboxItems">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            id="{{ item.id }}"
-            [(ngModel)]="item.isChecked"
-          />
-          <label class="form-check-label" for="{{ item.id }}">
-            {{ item.label }}
-          </label>
-        </div>
+        <td colspan="2">
+          <h6>{{ "ControlPanel.advancedOption" | translate }}</h6>
+
+          <div class="checkbox-container">
+            <div class="form-check" *ngFor="let item of checkboxItems">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="{{ item.id }}"
+                [(ngModel)]="item.isChecked"
+                (change)="onCheckboxChange(item)"
+              />
+              <label class="form-check-label" for="{{ item.id }}">
+                {{ item.label | translate }}
+              </label>
+            </div>
+          </div>
+          <button
+            (click)="resetCheckbox()"
+            class="btn btn-outline-primary btn-sm"
+          >
+            Reset
+          </button>
+        </td>
       </tr>
     </tbody>
   </table>

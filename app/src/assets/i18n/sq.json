@@ -13,18 +13,21 @@
     "copied": "U kopjua"
   },
   "ControlPanel": {
+    "panelHeader": "Zgjidh opsionet e tua",
     "view": "Pamja",
     "generateBtn": "Gjenero",
     "viewTypePrompt": "Zgjidh formatin",
     "genderSelectPrompt": "Zgjidh gjininë",
     "countySelectPrompt": "Zgjidh qarkun",
     "quantity": "Sasia",
-    "county": "Qarku"
+    "county": "Qarku",
+    "advancedOption": "Personalizo JSON-in tënd"
   },
   "UserData": {
     "fullName": "Emri i plotë",
     "name": "Emri",
-    "username": "Username",
+    "surname": "Mbiemri",
+    "username": "Username-i",
     "birthday": "Ditëlindja",
     "age": "Mosha",
     "address": "Adresa",

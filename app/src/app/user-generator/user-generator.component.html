@@ -17,6 +17,7 @@
             <textarea
               *ngIf="chosenViewType == ViewTypes.JSON"
               id="jsonView"
+              spellcheck="false"
               style="cursor: url('assets/images/copy_icon.png'), auto"
               (click)="onTextareaClick($event)"
               title="Click to copy"

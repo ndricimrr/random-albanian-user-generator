@@ -45,20 +45,8 @@ textarea {
 }
 
 textarea:hover {
-  background-color: rgba(
-    173,
-    230,
-    181,
-    0.479
-  ); /* Change this to your desired background color */
+  background-color: rgba(173, 230, 181, 0.479);
 }
-
-/* table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-} */
-
 .clipboardCopyContainer {
   display: flex;
   justify-content: right;

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ViewType } from 'src/app/utils/component-interface';
+import { CheckboxItem, ViewType } from 'src/app/utils/component-interface';
 import { Gender, User } from 'src/app/utils/user-interface';
 import { fullListCounties } from 'lists/counties';
 import { TranslateService } from '@ngx-translate/core';
@@ -33,11 +33,23 @@ export class ControlPanelComponent {
   counties = fullListCounties;
   numberOfNamesDesired = 2;
 
-  checkboxItems = [
-    { id: 1, label: 'Gender 1', isChecked: false },
-    { id: 2, label: 'Option 2', isChecked: false },
-    { id: 3, label: 'Option 3', isChecked: false },
+  checkboxItems: CheckboxItem[] = [
+    { id: 'name', label: 'UserData.name', isChecked: true },
+    { id: 'surname', label: 'UserData.surname', isChecked: true },
+    { id: 'gender', label: 'Common.gender', isChecked: true },
+    { id: 'age', label: 'UserData.age', isChecked: true },
+    { id: 'county', label: 'ControlPanel.county', isChecked: true },
+    { id: 'username', label: 'UserData.username', isChecked: true },
+    { id: 'birthday', label: 'UserData.birthday', isChecked: true },
+    { id: 'address', label: 'UserData.address', isChecked: true },
+    { id: 'email', label: 'UserData.email', isChecked: true },
+    { id: 'phone', label: 'UserData.phone', isChecked: true },
   ];
+
+  onCheckboxChange(item: CheckboxItem) {
+    // console.log(`${item.label} checkbox state changed to ${item.isChecked}`);
+    // You can perform additional logic here
+  }
 
   constructor(translate: TranslateService) {}
 
@@ -65,7 +77,25 @@ export class ControlPanelComponent {
       );
       randomNamesTempList.push(randomUser);
     }
-    this.usersList = randomNamesTempList;
+    const listOfPropertiesToRemove: string[] = this.checkboxItems
+      .filter((item) => !item.isChecked)
+      .map((item) => item.id);
+
+    // filter out user data properties as needed
+    const filteredPropertiesList = randomNamesTempList.map((user: User) => {
+      listOfPropertiesToRemove.forEach((prop) => delete (user as any)[prop]);
+      return user;
+    });
+
+    this.usersList = filteredPropertiesList;
     this.userListUpdated.emit(this.usersList);
+  }
+
+  /**
+   * Resets the state of checkboxes by setting the 'isChecked' property to true for each item.
+   *
+   */
+  resetCheckbox(): void {
+    this.checkboxItems.forEach((item) => (item.isChecked = true));
   }
 }
