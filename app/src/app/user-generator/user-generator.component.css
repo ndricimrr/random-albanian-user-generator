@@ -39,14 +39,14 @@ textarea {
   font-size: 7pt;
   border: none;
   resize: none;
+  border-radius: 2px;
+  padding-left: 15px;
+  padding-top: 15px;
 }
 
-/* table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-} */
-
+textarea:hover {
+  background-color: rgba(173, 230, 181, 0.479);
+}
 .clipboardCopyContainer {
   display: flex;
   justify-content: right;

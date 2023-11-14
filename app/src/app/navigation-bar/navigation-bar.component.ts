@@ -8,8 +8,12 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class NavigationBarComponent {
   currentLanguage: string;
+  activeLink: string = 'generate-users';
 
   constructor(private languageService: TranslateService) {
+    const currentPageLink = window.location.pathname.substring(1) || '';
+    this.activeLink = currentPageLink;
+
     const storedLanguage = sessionStorage.getItem('language');
     this.currentLanguage = storedLanguage || languageService.currentLang;
     this.languageService.use(this.currentLanguage);

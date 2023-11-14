@@ -17,13 +17,14 @@ import {
 } from './functions';
 
 export interface Address {
-  number: number;
-  name: string;
+  number?: number;
+  name?: string;
 }
 
 export enum Gender {
-  FEMALE = 'gender.female',
-  MALE = 'gender.male',
+  FEMALE = 'female',
+  MALE = 'male',
+  RANDOM = 'random',
 }
 
 export interface PicturePath {
@@ -45,34 +46,34 @@ export enum AgeGroup {
 }
 
 export class User {
-  gender: Gender;
-  age: number;
-  county: string;
-  name: string;
-  surname: string;
-  username: string;
-  birthday: string;
-  address: Address;
-  email: string;
-  phone: string;
-  picturePath: PicturePath;
-  builtPicturePath: string;
-  ageGroup: AgeGroup;
+  name?: string;
+  surname?: string;
+  gender?: Gender;
+  age?: number;
+  county?: string;
+  username?: string;
+  birthday?: string;
+  address?: Address;
+  email?: string;
+  phone?: string;
+  picturePath?: PicturePath;
+  builtPicturePath?: string;
+  ageGroup?: AgeGroup;
 
-  constructor(gender?: Gender, age?: number, county?: string) {
-    this.gender = gender ? gender : getRandomGender();
-    this.age = age ? age : getRandomAge();
-    this.county = county ? county : getRandomCounty();
-
+  constructor(gender: Gender, age?: number, county?: string) {
+    this.gender = gender != Gender.RANDOM ? gender : getRandomGender();
     this.name =
       this.gender === Gender.FEMALE
         ? getRandomFemaleName()
         : getRandomMaleName();
     this.surname = getRandomSurname();
     this.username = getRandomUsername(this.name, this.surname);
-    this.birthday = getRandomBirthday(this.age);
-    this.address = getRandomAddress(this.county);
+
+    this.age = age ? age : getRandomAge();
     this.email = getRandomEmail(this.name, this.surname);
+    this.birthday = getRandomBirthday(this.age);
+    this.county = county ? county : getRandomCounty();
+    this.address = getRandomAddress(this.county);
     this.phone = getRandomPhoneNumber();
     this.picturePath =
       this.gender === Gender.FEMALE

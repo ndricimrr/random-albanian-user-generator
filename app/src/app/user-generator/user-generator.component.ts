@@ -13,12 +13,19 @@ export class UserGeneratorComponent {
   userList: User[] = [];
   onUserListUpdated(newList: User[]) {
     this.userList = newList;
+
+    // Filter not needed properties in the printed String
+    const tempUserList = newList.map(
+      ({ picturePath, builtPicturePath, ageGroup, ...rest }) => rest
+    );
+
     this.generatedRandomUsersString = JSON.stringify(
-      this.userList,
+      tempUserList,
       undefined,
       4
     );
   }
+
   chosenViewType: ViewType = ViewType.JSON;
   onChosenViewTypeUpdated(newViewType: ViewType) {
     this.chosenViewType = newViewType;
@@ -30,6 +37,12 @@ export class UserGeneratorComponent {
 
   constructor(translate: TranslateService) {
     this.translate = translate;
+  }
+
+  onTextareaClick(event: MouseEvent): void {
+    // Your code to be executed when the textarea is clicked
+    console.log('Textarea clicked!', event);
+    this.copyToClipboard();
   }
 
   /**

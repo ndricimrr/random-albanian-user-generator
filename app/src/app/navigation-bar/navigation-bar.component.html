@@ -7,10 +7,20 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="generate-names">Generate Names</a>
+          <a
+            class="nav-link"
+            [class.active]="activeLink === 'generate-users'"
+            href="generate-users"
+            >Generate Users</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="generate-users">Generate Users</a>
+          <a
+            class="nav-link"
+            [class.active]="activeLink === 'generate-names'"
+            href="generate-names"
+            >Generate Names</a
+          >
         </li>
       </ul>
     </div>
