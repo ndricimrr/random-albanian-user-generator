@@ -19,8 +19,8 @@
       <b>{{ "UserData.age" | translate }}: </b>{{ user.age }}
     </p>
     <p>
-      <b>{{ "UserData.address" | translate }} : </b>{{ user.address.name }}
-      {{ user.address.number }}
+      <b>{{ "UserData.address" | translate }} : </b>{{ user.address?.name }}
+      {{ user.address?.number }}
     </p>
     <p>
       <b>{{ "UserData.email" | translate }}: </b>{{ user.email }}

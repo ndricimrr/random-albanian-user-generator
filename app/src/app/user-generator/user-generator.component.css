@@ -41,6 +41,14 @@ textarea {
   resize: none;
 }
 
+textarea:hover {
+  background-color: rgb(
+    173,
+    230,
+    181
+  ); /* Change this to your desired background color */
+}
+
 /* table {
   font-family: arial, sans-serif;
   border-collapse: collapse;

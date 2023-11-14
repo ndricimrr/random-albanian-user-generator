@@ -17,8 +17,8 @@ import {
 } from './functions';
 
 export interface Address {
-  number: number;
-  name: string;
+  number?: number;
+  name?: string;
 }
 
 export enum Gender {
@@ -45,19 +45,19 @@ export enum AgeGroup {
 }
 
 export class User {
-  gender: Gender;
-  age: number;
-  county: string;
-  name: string;
-  surname: string;
-  username: string;
-  birthday: string;
-  address: Address;
-  email: string;
-  phone: string;
-  picturePath: PicturePath;
-  builtPicturePath: string;
-  ageGroup: AgeGroup;
+  gender?: Gender;
+  age?: number;
+  county?: string;
+  name?: string;
+  surname?: string;
+  username?: string;
+  birthday?: string;
+  address?: Address;
+  email?: string;
+  phone?: string;
+  picturePath?: PicturePath;
+  builtPicturePath?: string;
+  ageGroup?: AgeGroup;
 
   constructor(gender?: Gender, age?: number, county?: string) {
     this.gender = gender ? gender : getRandomGender();
