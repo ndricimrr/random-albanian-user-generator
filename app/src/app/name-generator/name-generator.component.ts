@@ -4,6 +4,7 @@ import { MALE_NAMES_MAX_LENGTH } from 'lists/male';
 import { FEMALE_NAMES_MAX_LENGTH } from 'lists/female';
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { Gender } from '../utils/user-interface';
 
 @Component({
   selector: 'app-name-generator',
@@ -17,8 +18,11 @@ export class NameGeneratorComponent {
   NUMBER_OF_NAMES_DESIRED_INPUT = 'numberOfNamesDesiredInputField';
   numberOfNamesDesired = 2;
   MAX_RANDOM_NAMES_ALLOWED = 5;
-  genders = ['Female', 'Male', 'Both'];
-  chosenGender = 'Female';
+
+  genders: string[] = Object.values(Gender);
+
+  chosenGender: Gender = Gender.FEMALE;
+
   generatedRandomNames = [''];
   resultsParagraphReference: HTMLElement | null = null;
 
@@ -50,7 +54,7 @@ export class NameGeneratorComponent {
    * @returns if chosen gender is female or not
    */
   isGenderFemale() {
-    return this.chosenGender === 'Female' ? true : false;
+    return this.chosenGender == Gender.FEMALE ? true : false;
   }
 
   /**
@@ -58,7 +62,7 @@ export class NameGeneratorComponent {
    * @returns if chosen gender is male or not
    */
   isGenderMale() {
-    return this.chosenGender === 'Male' ? true : false;
+    return this.chosenGender == Gender.MALE ? true : false;
   }
 
   /**

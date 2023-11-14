@@ -35,6 +35,7 @@
   },
   "Gender": {
     "female": "Female",
-    "male": "Male"
+    "male": "Male",
+    "random": "Random"
   }
 }

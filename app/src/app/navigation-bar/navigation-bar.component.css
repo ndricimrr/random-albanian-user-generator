@@ -44,3 +44,18 @@
 .flag-button:hover {
   background-color: rgba(158, 158, 158, 0.719);
 }
+
+.active {
+  position: relative;
+}
+
+.active::after {
+  content: "";
+  position: absolute;
+  bottom: -1px; /* Adjust the distance of the underline from the text */
+  left: 17px;
+  right: 0;
+  width: 90px;
+  border-bottom: 2px solid #666666ad; /* Adjust the color and style of the underline as needed */
+  display: block;
+}

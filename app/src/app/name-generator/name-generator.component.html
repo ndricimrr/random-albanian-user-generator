@@ -14,8 +14,11 @@
               [(ngModel)]="chosenGender"
               (ngModelChange)="onGenderChanged(chosenGender)"
             >
+              <option value="" disabled selected>
+                {{ "ControlPanel.genderSelectPrompt" | translate }}
+              </option>
               <option *ngFor="let item of genders" [value]="item">
-                {{ item }}
+                {{ "Gender." + item | translate }}
               </option>
             </select>
           </td>

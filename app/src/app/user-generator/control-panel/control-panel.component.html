@@ -15,9 +15,7 @@
               {{ "ControlPanel.genderSelectPrompt" | translate }}
             </option>
             <option *ngFor="let item of genders" [value]="item">
-              {{
-                (item === "male" ? "Gender.male" : "Gender.female") | translate
-              }}
+              {{ "Gender." + item | translate }}
             </option>
           </select>
         </td>

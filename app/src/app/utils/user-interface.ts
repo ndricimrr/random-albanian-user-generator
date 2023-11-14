@@ -24,6 +24,7 @@ export interface Address {
 export enum Gender {
   FEMALE = 'female',
   MALE = 'male',
+  RANDOM = 'random',
 }
 
 export interface PicturePath {
@@ -59,7 +60,8 @@ export class User {
   builtPicturePath?: string;
   ageGroup?: AgeGroup;
 
-  constructor(gender?: Gender, age?: number, county?: string) {
+  constructor(gender: Gender, age?: number, county?: string) {
+    this.gender = gender != Gender.RANDOM ? gender : getRandomGender();
     this.name =
       this.gender === Gender.FEMALE
         ? getRandomFemaleName()
@@ -67,7 +69,6 @@ export class User {
     this.surname = getRandomSurname();
     this.username = getRandomUsername(this.name, this.surname);
 
-    this.gender = gender ? gender : getRandomGender();
     this.age = age ? age : getRandomAge();
     this.email = getRandomEmail(this.name, this.surname);
     this.birthday = getRandomBirthday(this.age);

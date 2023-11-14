@@ -36,6 +36,7 @@
   },
   "Gender": {
     "female": "Femër",
-    "male": "Mashkull"
+    "male": "Mashkull",
+    "random": "Të dyja"
   }
 }
