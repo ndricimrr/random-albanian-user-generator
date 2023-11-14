@@ -33,7 +33,7 @@
     "email": "Email",
     "phone": "Phone"
   },
-  "gender": {
+  "Gender": {
     "female": "Female",
     "male": "Male"
   }

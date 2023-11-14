@@ -22,8 +22,8 @@ export interface Address {
 }
 
 export enum Gender {
-  FEMALE = 'gender.female',
-  MALE = 'gender.male',
+  FEMALE = 'female',
+  MALE = 'male',
 }
 
 export interface PicturePath {
@@ -45,11 +45,11 @@ export enum AgeGroup {
 }
 
 export class User {
+  name?: string;
+  surname?: string;
   gender?: Gender;
   age?: number;
   county?: string;
-  name?: string;
-  surname?: string;
   username?: string;
   birthday?: string;
   address?: Address;

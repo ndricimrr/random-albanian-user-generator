@@ -34,7 +34,7 @@
     "email": "Imeili",
     "phone": "Tel"
   },
-  "gender": {
+  "Gender": {
     "female": "Femër",
     "male": "Mashkull"
   }

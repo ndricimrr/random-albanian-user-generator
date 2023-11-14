@@ -18,7 +18,7 @@ export class ControlPanelComponent {
   onChosenViewTypeChange() {
     this.chosenViewTypeUpdated.emit(this.chosenViewType);
   }
-  genders = ['gender.female', 'gender.male'];
+  genders: string[] = Object.values(Gender);
   viewTypes = [
     ViewType.JSON,
     ViewType.GRAPHICAL_TABLE,
