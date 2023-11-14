@@ -60,19 +60,19 @@ export class User {
   ageGroup?: AgeGroup;
 
   constructor(gender?: Gender, age?: number, county?: string) {
-    this.gender = gender ? gender : getRandomGender();
-    this.age = age ? age : getRandomAge();
-    this.county = county ? county : getRandomCounty();
-
     this.name =
       this.gender === Gender.FEMALE
         ? getRandomFemaleName()
         : getRandomMaleName();
     this.surname = getRandomSurname();
     this.username = getRandomUsername(this.name, this.surname);
-    this.birthday = getRandomBirthday(this.age);
-    this.address = getRandomAddress(this.county);
+
+    this.gender = gender ? gender : getRandomGender();
+    this.age = age ? age : getRandomAge();
     this.email = getRandomEmail(this.name, this.surname);
+    this.birthday = getRandomBirthday(this.age);
+    this.county = county ? county : getRandomCounty();
+    this.address = getRandomAddress(this.county);
     this.phone = getRandomPhoneNumber();
     this.picturePath =
       this.gender === Gender.FEMALE

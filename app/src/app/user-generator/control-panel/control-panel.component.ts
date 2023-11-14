@@ -35,14 +35,14 @@ export class ControlPanelComponent {
 
   checkboxItems: CheckboxItem[] = [
     { id: 'name', label: 'UserData.name', isChecked: true },
-    { id: 'surname', label: 'UserData.surname', isChecked: true },
-    { id: 'gender', label: 'Common.gender', isChecked: true },
-    { id: 'age', label: 'UserData.age', isChecked: true },
-    { id: 'county', label: 'ControlPanel.county', isChecked: true },
-    { id: 'username', label: 'UserData.username', isChecked: true },
-    { id: 'birthday', label: 'UserData.birthday', isChecked: true },
-    { id: 'address', label: 'UserData.address', isChecked: true },
     { id: 'email', label: 'UserData.email', isChecked: true },
+    { id: 'surname', label: 'UserData.surname', isChecked: true },
+    { id: 'birthday', label: 'UserData.birthday', isChecked: true },
+    { id: 'username', label: 'UserData.username', isChecked: true },
+    { id: 'county', label: 'ControlPanel.county', isChecked: true },
+    { id: 'gender', label: 'Common.gender', isChecked: true },
+    { id: 'address', label: 'UserData.address', isChecked: true },
+    { id: 'age', label: 'UserData.age', isChecked: true },
     { id: 'phone', label: 'UserData.phone', isChecked: true },
   ];
 
