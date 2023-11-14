@@ -19,6 +19,17 @@
             </option>
           </select>
         </td>
+        <td>
+          <div class="form-check form-switch">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="onOffSwitch"
+              (change)="onToggleChange($event)"
+            />
+            <label class="form-check-label" for="onOffSwitch"></label>
+          </div>
+        </td>
       </tr>
       <tr>
         <td>{{ "ControlPanel.view" | translate }}</td>
@@ -36,6 +47,17 @@
               {{ item }}
             </option>
           </select>
+        </td>
+        <td>
+          <div class="form-check form-switch">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="onOffSwitch"
+              (change)="onToggleChange($event)"
+            />
+            <label class="form-check-label" for="onOffSwitch"></label>
+          </div>
         </td>
       </tr>
 
@@ -56,6 +78,17 @@
             [(ngModel)]="numberOfNamesDesired"
             value="0"
           />
+        </td>
+        <td>
+          <div class="form-check form-switch">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="onOffSwitch"
+              (change)="onToggleChange($event)"
+            />
+            <label class="form-check-label" for="onOffSwitch"></label>
+          </div>
         </td>
       </tr>
       <tr>
@@ -78,6 +111,17 @@
             </option>
           </select>
         </td>
+        <td>
+          <div class="form-check form-switch">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="onOffSwitch"
+              (change)="onToggleChange($event)"
+            />
+            <label class="form-check-label" for="onOffSwitch"></label>
+          </div>
+        </td>
       </tr>
 
       <tr>
@@ -87,18 +131,35 @@
           >
         </td>
         <td>
-          <input
-            class="form-control"
-            type="number"
-            min="18"
-            id="desiredAgeInputField"
-            max="{{ MAX_AGE_ALLOWED }}"
-            step="1"
-            [(ngModel)]="ageDesired"
-            value="18"
-          />
+          <div (click)="onAgeInputClick()">
+            <input
+              class="form-control"
+              type="number"
+              #ageInputRef
+              style="display: inline"
+              min="18"
+              id="desiredAgeInputField"
+              max="{{ MAX_AGE_ALLOWED }}"
+              step="1"
+              [(ngModel)]="ageDesired"
+              [disabled]="isAgeRandom"
+              value="18"
+            />
+          </div>
+        </td>
+        <td>
+          <div class="form-check form-switch">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="onOffSwitch"
+              (change)="onToggleChange($event)"
+            />
+            <label class="form-check-label" for="onOffSwitch"></label>
+          </div>
         </td>
       </tr>
+
       <tr>
         <td colspan="2">
           <h6>{{ "ControlPanel.advancedOption" | translate }}</h6>

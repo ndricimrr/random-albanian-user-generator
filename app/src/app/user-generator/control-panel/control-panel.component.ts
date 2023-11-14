@@ -1,9 +1,16 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { CheckboxItem, ViewType } from 'src/app/utils/component-interface';
 import { Gender, User } from 'src/app/utils/user-interface';
 import { fullListCounties } from 'lists/counties';
 import { TranslateService } from '@ngx-translate/core';
 import { MAX_AGE_ALLOWED, MAX_RANDOM_NAMES_ALLOWED } from '../constants';
+import { getRandomAge } from 'src/app/utils/functions';
 
 @Component({
   selector: 'control-panel',
@@ -30,6 +37,7 @@ export class ControlPanelComponent {
   chosenNumberOfUsers: number = 2;
   chosenCounty: string = fullListCounties[0];
   ageDesired: number = 18;
+  isAgeRandom: boolean = false;
   counties = fullListCounties;
   numberOfNamesDesired = 2;
 
@@ -45,6 +53,7 @@ export class ControlPanelComponent {
     { id: 'age', label: 'UserData.age', isChecked: true },
     { id: 'phone', label: 'UserData.phone', isChecked: true },
   ];
+  @ViewChild('ageInputRef') ageInputRef!: Element;
 
   onCheckboxChange(item: CheckboxItem) {
     // console.log(`${item.label} checkbox state changed to ${item.isChecked}`);
@@ -72,7 +81,7 @@ export class ControlPanelComponent {
     for (let index = 0; index < this.numberOfNamesDesired; index++) {
       const randomUser = new User(
         this.chosenGender,
-        this.ageDesired,
+        !this.isAgeRandom ? this.ageDesired : getRandomAge(),
         this.chosenCounty
       );
       randomNamesTempList.push(randomUser);
@@ -97,5 +106,29 @@ export class ControlPanelComponent {
    */
   resetCheckbox(): void {
     this.checkboxItems.forEach((item) => (item.isChecked = true));
+  }
+
+  /**
+   * Makes the age generated random
+   */
+  makeAgeRandom(): void {
+    if (this.ageInputRef) {
+      this.ageInputRef.ariaDisabled = 'true';
+    }
+    this.isAgeRandom = true;
+  }
+
+  onAgeInputClick() {
+    this.isAgeRandom = false;
+    console.log(this.isAgeRandom);
+  }
+
+  onToggleChange(event: any) {
+    console.log('Toggle state 1:', this.isAgeRandom);
+
+    this.isAgeRandom = this.isAgeRandom ? false : true;
+
+    console.log('Toggle state 2:', this.isAgeRandom);
+    // Add your logic here based on the toggle state
   }
 }

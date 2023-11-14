@@ -17,3 +17,8 @@
   flex: 1 0 50%; /* Each checkbox takes up 50% of the container width */
   box-sizing: border-box; /* Include padding and border in the width calculation */
 }
+/* 
+.small-text {
+  font-size: 0.75rem;
+  margin-bottom: 0.5rem;
+} */
