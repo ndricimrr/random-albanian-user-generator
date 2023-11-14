@@ -39,13 +39,17 @@ textarea {
   font-size: 7pt;
   border: none;
   resize: none;
+  border-radius: 2px;
+  padding-left: 15px;
+  padding-top: 15px;
 }
 
 textarea:hover {
-  background-color: rgb(
+  background-color: rgba(
     173,
     230,
-    181
+    181,
+    0.479
   ); /* Change this to your desired background color */
 }
 
