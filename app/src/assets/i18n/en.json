@@ -22,7 +22,7 @@
     "county": "County",
     "advancedOption": "Customize JSON properties",
     "random": "Random",
-    "selectAll": "Select all",
+    "selectAll": "Toggle all",
     "alertMaxQuantityExceeded": "Maximum number of random users allowed: {{maxUsers}} !",
     "negativeQuantityAlert": "Quantity cannot be a negative number!"
   },
