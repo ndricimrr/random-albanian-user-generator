@@ -8,7 +8,6 @@
   },
   "Common": {
     "gender": "Gjinia",
-    "age": "Mosha",
     "copyToClipboard": "Kopjo",
     "copied": "U kopjua"
   },
@@ -21,7 +20,11 @@
     "countySelectPrompt": "Zgjidh qarkun",
     "quantity": "Sasia",
     "county": "Qarku",
-    "advancedOption": "Personalizo JSON-in tënd"
+    "advancedOption": "Personalizo strukturën e objektit JSON",
+    "random": "Çfarëdo",
+    "selectAll": "Selekto të gjitha",
+    "alertMaxQuantityExceeded": "Nuk mund të gjenerosh më shumë se {{maxUsers}} përdorues përnjëherësh!",
+    "negativeQuantityAlert": "Sasia nuk mund të jetë negative!"
   },
   "UserData": {
     "fullName": "Emri i plotë",

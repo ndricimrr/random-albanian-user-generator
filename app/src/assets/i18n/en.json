@@ -20,7 +20,11 @@
     "countySelectPrompt": "Select County",
     "quantity": "Quantity",
     "county": "County",
-    "advancedOption": "Customize generated JSON structure"
+    "advancedOption": "Customize JSON properties",
+    "random": "Random",
+    "selectAll": "Select all",
+    "alertMaxQuantityExceeded": "Maximum number of random users allowed: {{maxUsers}} !",
+    "negativeQuantityAlert": "Quantity cannot be a negative number!"
   },
   "UserData": {
     "fullName": "Full Name",
