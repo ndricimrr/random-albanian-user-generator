@@ -1,9 +1,17 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { CheckboxItem, ViewType } from 'src/app/utils/component-interface';
 import { Gender, User } from 'src/app/utils/user-interface';
 import { fullListCounties } from 'lists/counties';
 import { TranslateService } from '@ngx-translate/core';
 import { MAX_AGE_ALLOWED, MAX_RANDOM_NAMES_ALLOWED } from '../constants';
+import { getRandomAge, getRandomCounty } from 'src/app/utils/functions';
 
 @Component({
   selector: 'control-panel',
@@ -30,6 +38,14 @@ export class ControlPanelComponent {
   chosenNumberOfUsers: number = 2;
   chosenCounty: string = fullListCounties[0];
   ageDesired: number = 18;
+
+  // booleans to save if any of the chosen options should be random numbers
+  isGenderRandom: boolean = false;
+  isQuantityRandom: boolean = false;
+  isCountyRandom: boolean = false;
+  isAgeRandom: boolean = false;
+  areAllRandom: boolean | undefined;
+
   counties = fullListCounties;
   numberOfNamesDesired = 2;
 
@@ -48,10 +64,13 @@ export class ControlPanelComponent {
 
   onCheckboxChange(item: CheckboxItem) {
     // console.log(`${item.label} checkbox state changed to ${item.isChecked}`);
-    // You can perform additional logic here
   }
 
-  constructor(translate: TranslateService) {}
+  translate: TranslateService;
+
+  constructor(translate: TranslateService) {
+    this.translate = translate;
+  }
 
   ngOnInit() {
     this.generateRandomUsers();
@@ -63,17 +82,23 @@ export class ControlPanelComponent {
    */
   generateRandomUsers() {
     if (this.numberOfNamesDesired > this.MAX_RANDOM_NAMES_ALLOWED) {
-      alert('Maximum number of allowed random users allowed 10');
+      alert(
+        this.translate.instant('ControlPanel.alertMaxQuantityExceeded', {
+          maxUsers: this.MAX_RANDOM_NAMES_ALLOWED,
+        })
+      );
       return;
     }
-
+    if (this.numberOfNamesDesired < 0) {
+      alert(this.translate.instant('ControlPanel.negativeQuantityAlert'));
+      return;
+    }
     let randomNamesTempList: User[] = [];
-
     for (let index = 0; index < this.numberOfNamesDesired; index++) {
       const randomUser = new User(
-        this.chosenGender,
-        this.ageDesired,
-        this.chosenCounty
+        !this.isGenderRandom ? this.chosenGender : Gender.RANDOM,
+        !this.isAgeRandom ? this.ageDesired : getRandomAge(),
+        !this.isCountyRandom ? this.chosenCounty : getRandomCounty()
       );
       randomNamesTempList.push(randomUser);
     }
@@ -97,5 +122,40 @@ export class ControlPanelComponent {
    */
   resetCheckbox(): void {
     this.checkboxItems.forEach((item) => (item.isChecked = true));
+  }
+
+  /**
+   * Handles toggling of all sliders
+   * @param event event of the slider clicked
+   */
+  onToggleChange(event: any) {
+    if (event.srcElement?.id === 'isGenderRandom') {
+      this.isGenderRandom = this.isGenderRandom ? false : true;
+    } else if (event.srcElement?.id === 'isQuantityRandom') {
+      this.isQuantityRandom = this.isQuantityRandom ? false : true;
+    } else if (event.srcElement?.id === 'isCountyRandom') {
+      this.isCountyRandom = this.isCountyRandom ? false : true;
+    } else if (event.srcElement?.id === 'isAgeRandom') {
+      this.isAgeRandom = this.isAgeRandom ? false : true;
+    } else if (event.srcElement?.id === 'areAllRandom') {
+      this.isGenderRandom = this.isGenderRandom ? false : true;
+      this.isQuantityRandom = this.isGenderRandom;
+      this.isCountyRandom = this.isGenderRandom;
+      this.isAgeRandom = this.isGenderRandom;
+      (
+        (document.getElementById('isGenderRandom') as HTMLInputElement) ?? {}
+      ).checked = this.isGenderRandom;
+      (
+        (document.getElementById('isQuantityRandom') as HTMLInputElement) ?? {}
+      ).checked = this.isGenderRandom;
+      (
+        (document.getElementById('isCountyRandom') as HTMLInputElement) ?? {}
+      ).checked = this.isGenderRandom;
+      (
+        (document.getElementById('isAgeRandom') as HTMLInputElement) ?? {}
+      ).checked = this.isGenderRandom;
+    } else {
+      console.error('Random selection sliders not working properly', event);
+    }
   }
 }

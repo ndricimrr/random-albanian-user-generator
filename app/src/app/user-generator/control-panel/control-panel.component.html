@@ -2,6 +2,12 @@
   <h6>{{ "ControlPanel.panelHeader" | translate }}</h6>
 
   <table class="table table-borderless">
+    <thead>
+      <td></td>
+      <td></td>
+
+      <td>{{ "ControlPanel.random" | translate }}</td>
+    </thead>
     <tbody>
       <tr>
         <td>{{ "Common.gender" | translate }}</td>
@@ -10,6 +16,7 @@
             class="form-select"
             [(ngModel)]="chosenGender"
             id="genderDropDown"
+            [disabled]="areAllRandom || isGenderRandom"
           >
             <option value="" disabled selected>
               {{ "ControlPanel.genderSelectPrompt" | translate }}
@@ -18,6 +25,102 @@
               {{ "Gender." + item | translate }}
             </option>
           </select>
+        </td>
+        <td class="align-middle">
+          <div class="form-check form-switch d-flex align-items-center">
+            <input
+              #isGenderRandomSlider
+              class="form-check-input"
+              type="checkbox"
+              id="isGenderRandom"
+              (change)="onToggleChange($event)"
+            />
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="numberOfItems" class="form-label">{{
+            "ControlPanel.county" | translate
+          }}</label>
+        </td>
+        <td>
+          <select
+            class="form-select"
+            [(ngModel)]="chosenCounty"
+            id="countyDropDown"
+            [disabled]="isCountyRandom"
+          >
+            <option value="" disabled selected>
+              {{ "ControlPanel.countySelectPrompt" | translate }}
+            </option>
+            <option *ngFor="let item of counties" [value]="item">
+              {{ item }}
+            </option>
+          </select>
+        </td>
+        <td class="align-middle">
+          <div class="form-check form-switch d-flex align-items-center">
+            <input
+              #isCountyRandomSlider
+              class="form-check-input"
+              type="checkbox"
+              id="isCountyRandom"
+              (change)="onToggleChange($event)"
+            />
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label for="numberOfItems" class="form-label">
+            {{ "UserData.age" | translate }}</label
+          >
+        </td>
+        <td>
+          <input
+            class="form-control"
+            type="number"
+            style="display: inline"
+            min="18"
+            id="desiredAgeInputField"
+            max="{{ MAX_AGE_ALLOWED }}"
+            step="1"
+            [(ngModel)]="ageDesired"
+            [disabled]="isAgeRandom"
+            value="18"
+          />
+        </td>
+        <td class="align-middle">
+          <div class="form-check form-switch d-flex align-items-center">
+            <input
+              #isAgeRandomSlider
+              class="form-check-input"
+              type="checkbox"
+              id="isAgeRandom"
+              (change)="onToggleChange($event)"
+            />
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="numberOfItems" class="form-label">{{
+            "ControlPanel.quantity" | translate
+          }}</label>
+        </td>
+        <td>
+          <input
+            class="form-control"
+            type="number"
+            min="0"
+            id="desiredRandomNumberInputField"
+            max="{{ MAX_RANDOM_NAMES_ALLOWED }}"
+            step="1"
+            [(ngModel)]="numberOfNamesDesired"
+            [value]="0"
+          />
         </td>
       </tr>
       <tr>
@@ -38,73 +141,33 @@
           </select>
         </td>
       </tr>
+      <tr>
+        <td></td>
+        <td style="text-align: right">
+          {{ "ControlPanel.selectAll" | translate }}
+        </td>
 
-      <tr>
-        <td>
-          <label for="numberOfItems" class="form-label">{{
-            "ControlPanel.quantity" | translate
-          }}</label>
-        </td>
-        <td>
-          <input
-            class="form-control"
-            type="number"
-            min="0"
-            id="desiredRandomNumberInputField"
-            max="{{ MAX_RANDOM_NAMES_ALLOWED }}"
-            step="1"
-            [(ngModel)]="numberOfNamesDesired"
-            value="0"
-          />
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label for="numberOfItems" class="form-label">{{
-            "ControlPanel.county" | translate
-          }}</label>
-        </td>
-        <td>
-          <select
-            class="form-select"
-            [(ngModel)]="chosenCounty"
-            id="countyDropDown"
-          >
-            <option value="" disabled selected>
-              {{ "ControlPanel.countySelectPrompt" | translate }}
-            </option>
-            <option *ngFor="let item of counties" [value]="item">
-              {{ item }}
-            </option>
-          </select>
+        <td class="align-middle">
+          <div class="form-check form-switch d-flex align-items-center">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="areAllRandom"
+              (change)="onToggleChange($event)"
+            />
+          </div>
         </td>
       </tr>
 
-      <tr>
-        <td>
-          <label for="numberOfItems" class="form-label">
-            {{ "UserData.age" | translate }}</label
-          >
-        </td>
-        <td>
-          <input
-            class="form-control"
-            type="number"
-            min="18"
-            id="desiredAgeInputField"
-            max="{{ MAX_AGE_ALLOWED }}"
-            step="1"
-            [(ngModel)]="ageDesired"
-            value="18"
-          />
-        </td>
-      </tr>
       <tr>
         <td colspan="2">
           <h6>{{ "ControlPanel.advancedOption" | translate }}</h6>
 
           <div class="checkbox-container">
-            <div class="form-check" *ngFor="let item of checkboxItems">
+            <div
+              class="form-check column-grid"
+              *ngFor="let item of checkboxItems"
+            >
               <input
                 class="form-check-input"
                 type="checkbox"
