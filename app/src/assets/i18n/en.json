@@ -1,7 +1,7 @@
 {
   "HELLO": "hello {{value}}",
   "NameGenerator": {
-    "header": "Generate albanian girl/boy names"
+    "header": "Generate Albanian Girl/Boy Names"
   },
   "UserGenerator": {
     "header": "Generate random male/female users"
