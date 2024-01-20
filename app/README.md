@@ -1,6 +1,19 @@
-# App
+# Random Albanian User Data Generator
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.5.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.0
+
+# Description
+
+This website is an an open source attempt at providing developers with a simple to use user interface for generating random albanian user data.
+
+Customized, names, surnames, steet names, phone numbers.
+
+Also Random Images are generated for people of different ages to depict the closest to real life data for developers.
+
+# UI
+
+Current User Interface as of 20.01.2024 looks like this:
+![User Interface](screenshot_app_en.PNG "User Interface")
 
 ## Development server
 
