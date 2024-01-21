@@ -1,3 +1,5 @@
+/*
+
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CodeViewComponent } from './code-view.component';
@@ -19,3 +21,5 @@ describe('CodeViewComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+*/

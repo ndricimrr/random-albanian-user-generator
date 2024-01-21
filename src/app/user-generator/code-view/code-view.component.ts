@@ -1,6 +1,6 @@
 // THIS FILE IS A WORK IN PROGRESS
 // ONLY TESTING FOR THE MOMENT
-
+/*
 import { Component, Inject, ViewChild } from "@angular/core";
 import { DOCUMENT } from "@angular/common";
 
@@ -45,3 +45,4 @@ export class CodeViewComponent {
     });
   }
 }
+*/
