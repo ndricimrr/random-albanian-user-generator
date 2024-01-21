@@ -1,11 +1,11 @@
-import { fullListCounties } from 'lists/counties';
-import { fullListFemaleNames } from 'lists/female';
-import { fullListFemalePaths } from 'lists/female_image_paths';
-import { fullListMaleNames } from 'lists/male';
-import { fullListSurnames } from 'lists/surnames';
-import { fullListMalePaths } from 'lists/male_image_paths';
-import { fullListStreetsByCity } from 'lists/streets';
-import { Address, AgeGroup, Gender, PicturePath } from './user-interface';
+import { fullListCounties } from "lists/counties";
+import { fullListFemaleNames } from "lists/female";
+import { fullListFemalePaths } from "lists/female_image_paths";
+import { fullListMaleNames } from "lists/male";
+import { fullListSurnames } from "lists/surnames";
+import { fullListMalePaths } from "lists/male_image_paths";
+import { fullListStreetsByCity } from "lists/streets";
+import { Address, AgeGroup, Gender, PicturePath } from "./user-interface";
 
 /**
  * Generates and returns a random number between min (inclusive) and max (exclusive)
@@ -29,7 +29,7 @@ export function getRandomBirthday(age: number): string {
   const date = getRandomNumber(1, 30);
   const month = getRandomNumber(1, 12);
   const birthYear = new Date().getFullYear() - age;
-  return date + '.' + month + '.' + birthYear;
+  return date + "." + month + "." + birthYear;
 }
 
 /**
@@ -37,13 +37,13 @@ export function getRandomBirthday(age: number): string {
  *
  */
 export function getRandomPhoneNumber(): string {
-  const operators = ['7', '8', '9'];
+  const operators = ["7", "8", "9"];
   const operatorIndex = getRandomNumber(0, operators.length - 1);
   const firstTwo = getRandomNumber(10, 100);
   const secondTwo = getRandomNumber(11, 99);
   const thirdThree = getRandomNumber(100, 1000);
   return (
-    '+355' + '6' + operators[operatorIndex] + firstTwo + secondTwo + thirdThree
+    "+355" + "6" + operators[operatorIndex] + firstTwo + secondTwo + thirdThree
   );
 }
 
@@ -54,7 +54,7 @@ export function getRandomPhoneNumber(): string {
  * @returns random email string
  */
 export function getRandomEmail(name: string, surname: string): string {
-  const separators = ['.', '_', '', '-'];
+  const separators = [".", "_", "", "-"];
   const separatorIndex = getRandomNumber(0, separators.length - 1);
   const nameSurname =
     name[0].toLowerCase() + separators[separatorIndex] + surname.toLowerCase();
@@ -64,9 +64,9 @@ export function getRandomEmail(name: string, surname: string): string {
   const isRandomNumberAdded = !!getRandomNumber(0, 1);
   const isNameFirst = !!getRandomNumber(0, 1);
   const emailUsername = (isNameFirst ? nameSurname : surnameName).concat(
-    isRandomNumberAdded ? randomNumber + '' : ''
+    isRandomNumberAdded ? randomNumber + "" : ""
   );
-  return emailUsername + '@' + 'example.com';
+  return emailUsername + "@" + "example.com";
 }
 
 /**
@@ -92,8 +92,8 @@ export function getRandomAddress(county: string): Address {
 export function getRandomCounty(): string {
   const maxIndex = fullListCounties.length - 1;
   if (maxIndex < 0) {
-    console.error('Failed to get random county');
-    return '';
+    console.error("Failed to get random county");
+    return "";
   }
   return fullListCounties[getRandomNumber(0, maxIndex)];
 }
@@ -109,8 +109,8 @@ export function getRandomGender(): Gender {
 export function getRandomFemaleName(): string {
   const maxIndex = fullListFemaleNames.length - 1;
   if (maxIndex < 0) {
-    console.error('Failed to generate random male name');
-    return '';
+    console.error("Failed to generate random male name");
+    return "";
   }
   return fullListFemaleNames[getRandomNumber(0, maxIndex)];
 }
@@ -122,8 +122,8 @@ export function getRandomFemaleName(): string {
 export function getRandomMaleName(): string {
   const maxIndex = fullListMaleNames.length - 1;
   if (maxIndex < 0) {
-    console.error('Failed to generate random male name');
-    return '';
+    console.error("Failed to generate random male name");
+    return "";
   }
   return fullListMaleNames[getRandomNumber(0, maxIndex)];
 }
@@ -135,8 +135,8 @@ export function getRandomMaleName(): string {
 export function getRandomSurname(): string {
   const maxIndex = fullListSurnames.length - 1;
   if (maxIndex < 0) {
-    console.error('Failed to generate random surnames');
-    return '';
+    console.error("Failed to generate random surnames");
+    return "";
   }
   return fullListSurnames[getRandomNumber(0, maxIndex)];
 }
@@ -155,7 +155,7 @@ export function getRandomAge(): number {
  * @returns random username
  */
 export function getRandomUsername(name: string, surname: string): string {
-  const separators = ['.', '_', '', '-'];
+  const separators = [".", "_", "", "-"];
   const separatorIndex = getRandomNumber(0, separators.length - 1);
   const nameSurname =
     name.toLowerCase() + separators[separatorIndex] + surname.toLowerCase();
@@ -167,7 +167,7 @@ export function getRandomUsername(name: string, surname: string): string {
 
   return (
     (isNameFirst ? nameSurname : surnameName) +
-    (isRandomNumberAdded ? randomNumber + '' : '')
+    (isRandomNumberAdded ? randomNumber + "" : "")
   );
 }
 
@@ -211,7 +211,7 @@ export function getRandomMaleImagePaths(age: number): PicturePath {
     fullListMalePaths[ageGroup as keyof typeof fullListMalePaths];
   const maxIndex = picturePathsByAgeGroup.length - 1;
   if (maxIndex < 0) {
-    console.error('Failed to get male image path from age');
+    console.error("Failed to get male image path from age");
   }
   return picturePathsByAgeGroup[getRandomNumber(0, maxIndex)];
 }
@@ -227,7 +227,7 @@ export function getRandomFemaleImagePaths(age: number): PicturePath {
     fullListFemalePaths[ageGroup as keyof typeof fullListFemalePaths];
   const maxIndex = picturePathsByAgeGroup.length - 1;
   if (maxIndex < 0) {
-    console.error('Failed to get female image path from age');
+    console.error("Failed to get female image path from age");
   }
   return picturePathsByAgeGroup[getRandomNumber(0, maxIndex)];
 }
@@ -244,7 +244,7 @@ export function getAssetsImagePath(
   picturePath: PicturePath,
   gender: Gender
 ): string {
-  const imagesDir = '../../assets/images/';
-  const genderFolder = gender === Gender.FEMALE ? 'female/' : 'male/';
-  return imagesDir + genderFolder + ageGroup + '/' + picturePath.large + '.jpg';
+  const imagesDir = "assets/images/";
+  const genderFolder = gender === Gender.FEMALE ? "female/" : "male/";
+  return imagesDir + genderFolder + ageGroup + "/" + picturePath.large + ".jpg";
 }
