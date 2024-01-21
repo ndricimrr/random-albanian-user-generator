@@ -22,11 +22,11 @@ jobs:
       - name: Install Angular CLI
         run: npm install -g @angular/cli
 
-      - name: Install dependencies
-        run: npm install
+      # - name: Install dependencies
+      #   run: npm install
 
-      - name: Build Angular app
-        run: ng build --configuration=production --base-href=https://ndricimrr.github.io/random-albanian-user-generator
+      # - name: Build Angular app
+      #   run: ng build --configuration=production --base-href=https://ndricimrr.github.io/random-albanian-user-generator
 
       # - name: Deploy to GitHub Pages
       #   uses: peaceiris/actions-gh-pages@v3
@@ -56,10 +56,10 @@ jobs:
           # base_href: # optional, default is /
 
           # branch on which the angular build will be deployed
-          # deploy_branch: # optional, default is gh-pages
+          deploy_branch: main # optional, default is gh-pages
 
           # The folder in which `ng build` provides its output. This is the folder which will be deployed to the `deploy_branch`.
-          angular_dist_build_folder: /dist/app
+          angular_dist_build_folder: ./dist/app
 
           # # If the action should run 'ng lint'
           # run_lint: # optional
