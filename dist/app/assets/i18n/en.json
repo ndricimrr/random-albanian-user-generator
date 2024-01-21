@@ -1,0 +1,45 @@
+{
+  "HELLO": "hello {{value}}",
+  "NameGenerator": {
+    "header": "Generate Albanian Girl/Boy Names"
+  },
+  "UserGenerator": {
+    "header": "Generate Random male/female users"
+  },
+  "Common": {
+    "gender": "Gender",
+    "copyToClipboard": "Copy to Clipboard",
+    "copied": "Copied"
+  },
+  "ControlPanel": {
+    "panelHeader": "Select options",
+    "view": "View",
+    "generateBtn": "Generate",
+    "viewTypePrompt": "Select View Type",
+    "genderSelectPrompt": "Select Gender",
+    "countySelectPrompt": "Select County",
+    "quantity": "Quantity",
+    "county": "County",
+    "advancedOption": "Customize JSON properties",
+    "random": "Random",
+    "selectAll": "Toggle all",
+    "alertMaxQuantityExceeded": "Maximum number of random users allowed: {{maxUsers}} !",
+    "negativeQuantityAlert": "Quantity cannot be a negative number!"
+  },
+  "UserData": {
+    "fullName": "Full Name",
+    "name": "Name",
+    "surname": "Surname",
+    "username": "Username",
+    "birthday": "Birthday",
+    "age": "Age",
+    "address": "Address",
+    "email": "Email",
+    "phone": "Phone"
+  },
+  "Gender": {
+    "female": "Female",
+    "male": "Male",
+    "random": "Random"
+  }
+}
