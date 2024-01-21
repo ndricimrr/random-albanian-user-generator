@@ -28,8 +28,14 @@ jobs:
       - name: Build Angular app
         run: ng build --configuration=production --base-href=https://ndricimrr.github.io/random-albanian-user-generator
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+      # - name: Deploy to GitHub Pages
+      #   uses: peaceiris/actions-gh-pages@v3
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     publish_dir: ./dist
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@4.1.1
         with:
-          github_token: ${{ secrets.RAUG }}
-          publish_dir: ./dist
+          branch: gh-pages # The branch the action should deploy to.
+          folder: dist # The folder the action should deploy.
