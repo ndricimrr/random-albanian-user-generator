@@ -16,6 +16,7 @@ import { UserTableViewComponent } from "./user-generator/grid-table-view/user-ta
 import { ControlPanelComponent } from "./user-generator/control-panel/control-panel.component";
 import { ListViewComponent } from "./user-generator/list-view/list-view.component";
 // import { CodeViewComponent } from "./user-generator/code-view/code-view.component";
+import { APP_BASE_HREF } from "@angular/common";
 
 // AoT requires an exported function for factories
 // export function HttpLoaderFactory(http: HttpClient) {
@@ -23,7 +24,11 @@ import { ListViewComponent } from "./user-generator/list-view/list-view.componen
 // }
 
 export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
+  return new TranslateHttpLoader(
+    http,
+    APP_BASE_HREF + "/assets/i18n/",
+    ".json"
+  );
 }
 
 @NgModule({
