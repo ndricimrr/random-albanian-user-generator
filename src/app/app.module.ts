@@ -26,7 +26,7 @@ import { APP_BASE_HREF } from "@angular/common";
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(
     http,
-    APP_BASE_HREF + "/assets/i18n/",
+    "random-albanian-user-generator" + "/assets/i18n/",
     ".json"
   );
 }
