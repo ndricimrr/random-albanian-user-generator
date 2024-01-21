@@ -23,7 +23,7 @@ jobs:
         run: npm install
 
       - name: Build Angular app
-        run: ng build --prod --base-href=https://ndricimrr.github.io/random-albanian-user-generator/
+        run: ng build --configuration=production --base-href=https://ndricimrr.github.io/random-albanian-user-generator
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
