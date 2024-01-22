@@ -20,9 +20,9 @@ import { APP_BASE_HREF, CommonModule } from "@angular/common";
 import { InjectionToken } from "@angular/core";
 
 // AoT requires an exported function for factories
-// export function HttpLoaderFactory(http: HttpClient) {
-//   return new TranslateHttpLoader(http);
-// }
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 // export const BASE_HREF = new InjectionToken<string>("BASE_HREF");
 
@@ -34,10 +34,11 @@ import { InjectionToken } from "@angular/core";
 //   );
 // }
 
-export function HttpLoaderFactory(http: HttpClient) {
-  const baseHref = document.getElementsByTagName("base")[0].href;
-  return new TranslateHttpLoader(http, `${baseHref}assets/i18n/`, ".json");
-}
+// export function HttpLoaderFactory(http: HttpClient) {
+//   const baseHref = document.getElementsByTagName("base")[0].href;
+
+//   return new TranslateHttpLoader(http, `${baseHref}assets/i18n/`, ".json");
+// }
 
 @NgModule({
   declarations: [
