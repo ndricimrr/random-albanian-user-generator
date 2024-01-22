@@ -54,14 +54,15 @@ on:
     branches:
       - main
 
- deploy:
+jobs:
+  deploy:
     permissions:
       pages: write
       id-token: write
 
     environment:
       name: github-pages
-      url: ${{ steps.build.outputs.url }}  # Use the correct output from your build step
+      url: ${{ steps.build.outputs.url }} # Use the correct output from your build step
 
     runs-on: ubuntu-latest
 
@@ -76,7 +77,7 @@ on:
       - name: Set up Node.js for deployment
         uses: actions/setup-node@v2
         with:
-          node-version: "18"  # Adjust the Node.js version as needed
+          node-version: "18" # Adjust the Node.js version as needed
 
       - name: Install Angular CLI && dependencies
         run: npm install -g @angular/cli
@@ -92,7 +93,7 @@ on:
         uses: actions/deploy-pages@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          branch: main  # Change this to your main branch
+          branch: main # Change this to your main branch
           folder: docs
 # jobs:
 #   # Build job
@@ -115,7 +116,6 @@ on:
 
 #       - name: Build Angular app
 #         run: ng build --configuration=production --base-href=https://ndricimrr.github.io/random-albanian-user-generator
-
 
 #     # <Not provided for brevity>
 #     # At a minimum this job should upload artifacts using actions/upload-pages-artifact
