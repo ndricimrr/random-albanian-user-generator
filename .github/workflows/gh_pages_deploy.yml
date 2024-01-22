@@ -1,0 +1,143 @@
+# name: Deploy to GitHub Pages
+
+# on:
+#   push:
+#     branches:
+#       - main
+
+# jobs:
+#   # Test
+#   deploy:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v2
+
+#       - name: Set up Node.js
+#         uses: actions/setup-node@v2
+#         with:
+#           node-version: "18"
+
+#       - name: Install Angular CLI
+#         run: npm install -g @angular/cli
+
+#       # - name: Install dependencies
+#       #   run: npm install
+
+#       # - name: Build Angular app
+#       #   run: ng build --configuration=production --base-href=https://ndricimrr.github.io/random-albanian-user-generator
+
+#       # - name: Deploy to GitHub Pages
+#       #   uses: peaceiris/actions-gh-pages@v3
+#       #   with:
+#       #     github_token: ${{ secrets.GITHUB_TOKEN }}
+#       #     publish_dir: ./dist
+
+#       # - name: Deploy
+#       #   uses: JamesIves/github-pages-deploy-action@4.1.1
+#       #   with:
+#       #     branch: gh-pages # The branch the action should deploy to.
+#       #     folder: dist # The folder the action should deploy.
+
+#       - name: Deploy to GitHub Pages
+#         uses: AhsanAyaz/angular-deploy-gh-pages-actions@v1.4.0
+#         with:
+#           github_access_token: ${{ secrets.GITHUB_TOKEN }}
+#           deploy_branch: main # optional, default is gh-pages
+#           angular_dist_build_folder: dist/app
+
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+ deploy:
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.build.outputs.url }}  # Use the correct output from your build step
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Set up Node.js for deployment
+        uses: actions/setup-node@v2
+        with:
+          node-version: "18"  # Adjust the Node.js version as needed
+
+      - name: Install Angular CLI && dependencies
+        run: npm install -g @angular/cli
+
+      # - name: Install dependencies for deployment
+      #   run: npm install
+
+      - name: Build Angular app for deployment
+        run: ng build --configuration=production --output-path docs --base-href=https://ndricimrr.github.io/random-albanian-user-generator
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main  # Change this to your main branch
+          folder: docs
+# jobs:
+#   # Build job
+#   build:
+
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v2
+
+#       - name: Set up Node.js
+#         uses: actions/setup-node@v2
+#         with:
+#           node-version: "18"
+
+#       - name: Install Angular CLI
+#         run: npm install -g @angular/cli
+
+#       - name: Install dependencies
+#         run: npm install
+
+#       - name: Build Angular app
+#         run: ng build --configuration=production --base-href=https://ndricimrr.github.io/random-albanian-user-generator
+
+
+#     # <Not provided for brevity>
+#     # At a minimum this job should upload artifacts using actions/upload-pages-artifact
+
+#   # Deploy job
+#   deploy:
+#     # Add a dependency to the build job
+#     needs: build
+
+#     # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+#     permissions:
+#       pages: write # to deploy to Pages
+#       id-token: write # to verify the deployment originates from an appropriate source
+
+#     # Deploy to the github-pages environment
+#     environment:
+#       name: github-pages
+#       url: ${{ steps.deployment.outputs.page_url }}
+
+#     # Specify runner + deployment step
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Deploy to GitHub Pages
+#         id: deployment
+#         uses: actions/deploy-pages@v4 # or specific "vX.X.X" version tag for this action
