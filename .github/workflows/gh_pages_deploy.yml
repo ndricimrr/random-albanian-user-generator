@@ -76,7 +76,7 @@ jobs:
         run: npm install
 
       - name: Build Angular app
-        run: ng build --configuration=production --output-path docs --base-href=https://ndricimrr.github.io/random-albanian-user-generator
+        run: ng build --configuration=production --output-path docs --base-href=/random-albanian-user-generator/
 
       - name: Upload artifacts
         uses: actions/upload-pages-artifact@v3
