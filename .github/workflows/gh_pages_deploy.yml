@@ -109,9 +109,6 @@ jobs:
           node-version: "18" # Updated to Node.js 20
           check-latest: true
 
-      - name: Install dependencies for deployment
-        run: npm install
-
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
