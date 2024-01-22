@@ -47,53 +47,74 @@
 #           deploy_branch: main # optional, default is gh-pages
 #           angular_dist_build_folder: dist/app
 
-name: Deploy to GitHub Pages
+name: Angular CI/CD
 
 on:
   push:
     branches:
-      - main
+      - main # Change this to your main branch
 
 jobs:
-  deploy:
-    permissions:
-      pages: write
-      id-token: write
-
-    environment:
-      name: github-pages
-      url: ${{ steps.build.outputs.url }} # Use the correct output from your build step
-
+  # Build job
+  build:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "18" # Adjust the Node.js version as needed
+
+      - name: Install Angular CLI
+        run: npm install -g @angular/cli
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Angular app
+        run: ng build --configuration=production --output-path docs --base-href=https://ndricimrr.github.io/random-albanian-user-generator
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: github-pages
+          path: docs # Change this to the output folder of your Angular build
+
+  # Deploy job
+  deploy:
+    needs: build
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: github-pages
 
       - name: Set up Node.js for deployment
         uses: actions/setup-node@v2
         with:
           node-version: "18" # Adjust the Node.js version as needed
 
-      - name: Install Angular CLI && dependencies
-        run: npm install -g @angular/cli
-
-      # - name: Install dependencies for deployment
-      #   run: npm install
-
-      - name: Build Angular app for deployment
-        run: ng build --configuration=production --output-path docs --base-href=https://ndricimrr.github.io/random-albanian-user-generator
+      - name: Install dependencies for deployment
+        run: npm install
 
       - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          branch: main # Change this to your main branch
-          folder: docs
 # jobs:
 #   # Build job
 #   build:
