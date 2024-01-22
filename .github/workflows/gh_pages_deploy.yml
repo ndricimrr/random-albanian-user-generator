@@ -68,11 +68,11 @@ jobs:
         with:
           node-version: "18" # Adjust the Node.js version as needed
 
-      - name: Install Angular CLI
+      - name: Install Angular CLI & dependencies
         run: npm install -g @angular/cli
 
-      - name: Install dependencies
-        run: npm install
+      # - name: Install dependencies
+      #   run: npm install
 
       - name: Build Angular app
         run: ng build --configuration=production --output-path docs --base-href=https://ndricimrr.github.io/random-albanian-user-generator
@@ -107,8 +107,8 @@ jobs:
         with:
           node-version: "18" # Adjust the Node.js version as needed
 
-      - name: Install dependencies for deployment
-        run: npm install
+      # - name: Install dependencies for deployment
+      #   run: npm install
 
       - name: Deploy to GitHub Pages
         id: deployment
