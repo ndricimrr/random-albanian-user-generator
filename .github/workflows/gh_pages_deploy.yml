@@ -71,8 +71,8 @@ jobs:
       - name: Install Angular CLI & dependencies
         run: npm install -g @angular/cli
 
-      # - name: Install dependencies
-      #   run: npm install
+      - name: Install dependencies
+        run: npm install
 
       - name: Build Angular app
         run: ng build --configuration=production --output-path docs --base-href=https://ndricimrr.github.io/random-albanian-user-generator
