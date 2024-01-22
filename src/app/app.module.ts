@@ -35,11 +35,8 @@ import { InjectionToken } from "@angular/core";
 // }
 
 export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(
-    http,
-    "./random-albanian-user-generator/assets/i18n/",
-    ".json"
-  );
+  const baseHref = document.getElementsByTagName("base")[0].href;
+  return new TranslateHttpLoader(http, `${baseHref}assets/i18n/`, ".json");
 }
 
 @NgModule({
