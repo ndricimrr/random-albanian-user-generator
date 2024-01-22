@@ -79,7 +79,7 @@ jobs:
         run: ng build --configuration=production --output-path docs --base-href=https://ndricimrr.github.io/random-albanian-user-generator
 
       - name: Upload artifacts
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v3
         with:
           name: github-pages
           path: docs # Change this to the output folder of your Angular build
