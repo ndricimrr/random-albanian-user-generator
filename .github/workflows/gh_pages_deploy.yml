@@ -61,10 +61,10 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3 # Updated to use v3
+        uses: actions/setup-node@v4 # Updated to use v3
         with:
           node-version: "18" # Updated to Node.js 20
           check-latest: true
@@ -79,7 +79,7 @@ jobs:
         run: ng build --configuration=production --output-path docs --base-href=https://ndricimrr.github.io/random-albanian-user-generator
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-pages-artifact@v4
         with:
           name: github-pages
           path: docs # Change this to the output folder of your Angular build
@@ -92,28 +92,35 @@ jobs:
       pages: write
       id-token: write
 
+    # environment:
+    #   name: github-pages
+
     environment:
       name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     runs-on: ubuntu-latest
-
     steps:
-      - name: Download artifacts
-        uses: actions/download-artifact@v2
-        with:
-          name: github-pages
+      # - name: Download artifacts
+      #   uses: actions/download-artifact@v2
+      #   with:
+      #     name: github-pages
 
-      - name: Set up Node.js for deployment
-        uses: actions/setup-node@v3 # Updated to use v3
-        with:
-          node-version: "18" # Updated to Node.js 20
-          check-latest: true
+      # - name: Set up Node.js for deployment
+      #   uses: actions/setup-node@v3 # Updated to use v3
+      #   with:
+      #     node-version: "18" # Updated to Node.js 20
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+        uses: actions/deploy-pages@v4 # or specific "vX.X.X" version tag for this action
+
+
+      # - name: Deploy to GitHub Pages
+      #   id: deployment
+      #   uses: actions/deploy-pages@v4
+      #   with:
+      #     token: ${{ secrets.GITHUB_TOKEN }}
 # jobs:
 #   # Build job
 #   build:
@@ -139,24 +146,24 @@ jobs:
 #     # <Not provided for brevity>
 #     # At a minimum this job should upload artifacts using actions/upload-pages-artifact
 
-#   # Deploy job
-#   deploy:
-#     # Add a dependency to the build job
-#     needs: build
+# Deploy job
+# deploy:
+#   # Add a dependency to the build job
+#   needs: build
 
-#     # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
-#     permissions:
-#       pages: write # to deploy to Pages
-#       id-token: write # to verify the deployment originates from an appropriate source
+#   # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+#   permissions:
+#     pages: write # to deploy to Pages
+#     id-token: write # to verify the deployment originates from an appropriate source
 
-#     # Deploy to the github-pages environment
-#     environment:
-#       name: github-pages
-#       url: ${{ steps.deployment.outputs.page_url }}
+#   # Deploy to the github-pages environment
+#   environment:
+#     name: github-pages
+#     url: ${{ steps.deployment.outputs.page_url }}
 
-#     # Specify runner + deployment step
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Deploy to GitHub Pages
-#         id: deployment
-#         uses: actions/deploy-pages@v4 # or specific "vX.X.X" version tag for this action
+#   # Specify runner + deployment step
+#   runs-on: ubuntu-latest
+#   steps:
+#     - name: Deploy to GitHub Pages
+#       id: deployment
+#       uses: actions/deploy-pages@v4 # or specific "vX.X.X" version tag for this action
