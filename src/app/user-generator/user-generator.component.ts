@@ -1,15 +1,15 @@
-import { ViewType } from '../utils/component-interface';
-import { User } from '../utils/user-interface';
-import { TranslateService } from '@ngx-translate/core';
-import { Component } from '@angular/core';
+import { ViewType } from "../utils/component-interface";
+import { User } from "../utils/user-interface";
+import { TranslateService } from "@ngx-translate/core";
+import { Component } from "@angular/core";
 
 @Component({
-  selector: 'app-user-generator',
-  templateUrl: './user-generator.component.html',
-  styleUrls: ['./user-generator.component.css'],
+  selector: "app-user-generator",
+  templateUrl: "./user-generator.component.html",
+  styleUrls: ["./user-generator.component.css"],
 })
 export class UserGeneratorComponent {
-  generatedRandomUsersString: string = '';
+  generatedRandomUsersString: string = "";
   userList: User[] = [];
   onUserListUpdated(newList: User[]) {
     this.userList = newList;
@@ -41,7 +41,6 @@ export class UserGeneratorComponent {
 
   onTextareaClick(event: MouseEvent): void {
     // Your code to be executed when the textarea is clicked
-    console.log('Textarea clicked!', event);
     this.copyToClipboard();
   }
 
@@ -50,13 +49,13 @@ export class UserGeneratorComponent {
    */
   copyToClipboard(): void {
     navigator.clipboard.writeText(this.generatedRandomUsersString);
-    const copiedMessageElement = document.getElementById('copiedMessage');
+    const copiedMessageElement = document.getElementById("copiedMessage");
     if (!copiedMessageElement) {
       return;
     }
-    copiedMessageElement.style.visibility = 'visible';
+    copiedMessageElement.style.visibility = "visible";
     setTimeout(() => {
-      copiedMessageElement.style.visibility = 'hidden';
+      copiedMessageElement.style.visibility = "hidden";
     }, 1000);
   }
 }

@@ -19,7 +19,6 @@ export class NavigationBarComponent {
       if (event instanceof NavigationEnd) {
         // Get the current page link after each navigation
         const currentPageLink = this.router.url.substring(1) || "";
-        console.log(currentPageLink);
         this.activeLink = currentPageLink;
       }
     });
