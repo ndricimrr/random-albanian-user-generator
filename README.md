@@ -10,7 +10,7 @@ Also Random Images are generated for people of different ages to depict the clos
 
 # Mobile App
 
-This App is also released as an Android App on Google Playstore
+This App is also to be released as an Android App on Google Playstore. It is currently work in progress there.
 
 # Website
 
